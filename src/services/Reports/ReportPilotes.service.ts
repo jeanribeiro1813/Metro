@@ -87,9 +87,9 @@ class ReportePilotesService {
                     obj['imgs'].push({
 
                         "id": key,
-                        img_1: obj['img_1'][idx],
-                        img_2: obj['img_2'][idx],
-                        img_3: obj['img_3'][idx],
+                        "img_1": obj['img_1'][idx],
+                        "img_2": obj['img_2'][idx],
+                        "img_3": obj['img_3'][idx],
 
                     });
 
