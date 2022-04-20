@@ -7,6 +7,7 @@ import PiloteImageController from '../controllers/PiloteImageController';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 import uploadConfig from '../config/upload';
+import {celebrate, Joi, Segments} from 'celebrate';
 
 const pilotesRouter = Router();
 
@@ -24,6 +25,14 @@ pilotesRouter.post('/show', pilotesController.show);
 pilotesRouter.put('/update/:id',pilotesController.update);
 pilotesRouter.get('/summary', pilotesController.summary);
 pilotesRouter.delete('/delete/:id',pilotesController.delete);
+
+pilotesRouter.post('/load', celebrate({
+    [Segments.BODY]:{
+        actividad:Joi.string().required(),
+    }
+}),
+pilotesController.filtro);
+
 
 pilotesRouter.patch(
     '/image',

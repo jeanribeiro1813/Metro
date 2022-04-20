@@ -6,6 +6,7 @@ import ShowPMTService from '../services/PMT/ShowPMTService';
 import UpdatePMTService from '../services/PMT/UpdatePMTService';
 import DeletePMTService from '../services/PMT/DeletePMTService'
 import LoadLayersService from '../services/Layers/SetUpPMTLayerService';
+import LoadPMTFilterService from '../services/PMT/LoadPMTFilterService';
 
 export default class PMTController {
 
@@ -188,6 +189,17 @@ export default class PMTController {
 
     const loadPMTSummary = new LoadLayersService();
     const summary = await loadPMTSummary.execute({});
+
+    return response.json(summary);
+  }
+
+  public async filtro(request: Request, response: Response): Promise<Response> {
+
+    const {atividades} = request.body
+
+    const loadPMTSummary = new LoadPMTFilterService();
+    
+    const summary = await loadPMTSummary.filter({atividades});
 
     return response.json(summary);
   }

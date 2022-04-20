@@ -6,6 +6,8 @@ import ShowPiloteService from '../services/Pilotes/ShowPiloteService';
 import UpdatePiloteService from '../services/Pilotes/UpdatePiloteService';
 import LoadPilotesSummaryService from '../services/Layers/SetUpPilotesLayerService';
 import DeletePiloteService from '../services/Pilotes/DeletePilotesService';
+import LoadPilotesFilterService from '../services/Pilotes/LoadPilotesFilterService';
+
 
 export default class PilotesController {
 
@@ -199,6 +201,19 @@ export default class PilotesController {
 
     return response.json(summary);
   }
+
+
+  public async filtro(request: Request, response: Response): Promise<Response> {
+
+    const {actividad} = request.body;
+
+    const loadPilotes = new LoadPilotesFilterService();
+    
+    const loadfilter = await loadPilotes.filter({actividad});
+
+    return response.json(loadfilter);
+  }
+
 
 }
 

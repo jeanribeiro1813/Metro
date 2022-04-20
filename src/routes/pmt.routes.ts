@@ -7,6 +7,7 @@ import PMTController from '../controllers/PMTController';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 import uploadConfig from '../config/upload';
+import {celebrate, Joi, Segments} from 'celebrate';
 
 const pmtRouter = Router();
 
@@ -26,6 +27,12 @@ pmtRouter.post('/show', pmtController.show);
 pmtRouter.put('/update/:id',pmtController.update);
 pmtRouter.delete('/delete/:id',pmtController.delete);
 pmtRouter.get('/summary', pmtController.summary);
+
+pmtRouter.post('/load',celebrate({
+    [Segments.BODY]:{
+        atividades: Joi.string().required()
+    }
+}),pmtController.filtro)
 
 // pmtRouter.patch(
 //     '/image',
