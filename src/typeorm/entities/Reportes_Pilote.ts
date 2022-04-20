@@ -61,10 +61,19 @@ class Pilote{
     img_1:string  ;
 
     @Column('varchar')
+    img_1_obs:string  ;
+
+    @Column('varchar')
     img_2:string  ;
+
+    @Column('varchar')
+    img_2_obs:string  ;
     
     @Column('varchar')
     img_3:string;
+
+    @Column('varchar')
+    img_3_obs:string  ;
     
     @Column('varchar')
     vazio!:string ;

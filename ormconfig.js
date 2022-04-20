@@ -73,3 +73,23 @@ if(ENV==="local2prod"){
         }
     }
 }
+if(ENV==="localprodBkg"){
+    module.exports = {
+        "type": "postgres",
+        "host": "pml3.regea.com.br",
+        "port": 5432,
+        "username": "postgres",
+        "password": "Geologia@1",
+        "database": "pml3",
+        "schema": "backup",
+        "entities": [
+            "./src/typeorm/entities/*.ts"
+        ],
+        "migrations": [
+            "./src/database/migrations/*.ts"
+        ],
+        "cli": {
+            "migrationsDir":"./src/database/migrations"
+        }
+    }
+}

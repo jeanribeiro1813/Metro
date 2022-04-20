@@ -68,17 +68,17 @@ class ReportePilotesService {
 
                     obj['locali'].push(
                         {
-                            "id": key,
+                            "id": obj['locali'][idx],
                             "vazio": obj['vazio'][idx],
                             "cls": obj['cls'][idx],
                             "observaciones": obj['observaciones'][idx],
                             "actividade_area":'' ,
-                            "manha": obj['manha'][idx],
-                            "tarde": obj['tarde'][idx],
-                            "noche": obj['noche'][idx],
-                            "img_1": obj['img_1'][idx],
-                            "img_2": obj['img_2'][idx],
-                            "img_3": obj['img_3'][idx],
+                            "img_1": obj['img_1'],
+                            "img_1_obs": obj['img_1_obs'],
+                            "img_2": obj['img_2'],
+                            "img_2_obs": obj['img_2_obs'],
+                            "img_3": obj['img_3'],
+                            "img_3_obs": obj['img_3_obs'],
                         }
                     );
                   
@@ -92,17 +92,17 @@ class ReportePilotesService {
 
                 obj['locali'] = [
                     {
-                        "id": obj['id'],
+                        "id": obj['locali'],
                         "vazio": obj['vazio'],
                         "cls": obj['cls'],
                         "observaciones": obj['observaciones'],
                         "actividade_area":obj['actividade_area'],
-                        "manha": obj['manha'],
-                        "tarde": obj['tarde'],
-                        "noche": obj['noche'],
                         "img_1": obj['img_1'],
+                        "img_1_obs": obj['img_1_obs'],
                         "img_2": obj['img_2'],
+                        "img_2_obs": obj['img_2_obs'],
                         "img_3": obj['img_3'],
+                        "img_3_obs": obj['img_3_obs'],
                     }
                 ];
 
@@ -113,9 +113,9 @@ class ReportePilotesService {
             delete obj['img_1']
             delete obj['img_2']
             delete obj['img_3']
-            delete obj['manha']
-            delete obj['tarde']
-            delete obj['noche']
+            delete obj['img_1_obs']
+            delete obj['img_2_obs']
+            delete obj['img_3_obs']
             delete obj['vazio']
             delete obj['cls']
             delete obj['observaciones']

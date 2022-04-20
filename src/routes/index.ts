@@ -9,6 +9,9 @@ import profileRouter from './profile.routes';
 import searchRoutes from './search.routes';
 import reportRoutes from './reports.route';
 import pmtRoutes from './pmt.routes'
+import accionesRoutes from './acciones.routes'
+import actividadesRoutes from './actividades.routes';
+import inconsistenciaRoutes from './incosistencia.routes';
 
 const routes = Router();
 
@@ -21,6 +24,11 @@ routes.use('/profile',profileRouter);
 routes.use('/search',searchRoutes);
 routes.use('/reports',reportRoutes);
 routes.use('/pmt',pmtRoutes);
+routes.use('/acciones',accionesRoutes);
+routes.use('/actividades',actividadesRoutes);
+routes.use('/inconsistencia',inconsistenciaRoutes);
+
+
 
 
 export default routes;
