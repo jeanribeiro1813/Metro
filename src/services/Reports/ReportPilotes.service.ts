@@ -57,41 +57,31 @@ class ReportePilotesService {
 
             })
 
-            obj['actividade_area'] = [];
-            obj['condiciones_climaticas'] = [];
-            obj['imgs'] = [];
+            // obj['actividade_area'] = [];
+            // obj['condiciones_climaticas'] = [];
+            obj['actividade_area'] = '';
 
             if (typeof (obj['locali']) === 'object') {
 
                 obj['locali'].forEach(function (key: any, idx: string | number) {
+                 
 
-                    obj['actividade_area'].push(
+                    obj['locali'].push(
                         {
                             "id": key,
                             "vazio": obj['vazio'][idx],
                             "cls": obj['cls'][idx],
                             "observaciones": obj['observaciones'][idx],
-                        }
-                    );
-
-                    obj['condiciones_climaticas'].push(
-                        {
-                            "id": key,
+                            "actividade_area":'' ,
                             "manha": obj['manha'][idx],
                             "tarde": obj['tarde'][idx],
                             "noche": obj['noche'][idx],
+                            "img_1": obj['img_1'][idx],
+                            "img_2": obj['img_2'][idx],
+                            "img_3": obj['img_3'][idx],
                         }
                     );
-
-
-                    obj['imgs'].push({
-
-                        "id": key,
-                        "img_1": obj['img_1'][idx],
-                        "img_2": obj['img_2'][idx],
-                        "img_3": obj['img_3'][idx],
-
-                    });
+                  
 
                 });
 
@@ -100,33 +90,26 @@ class ReportePilotesService {
 
             else if (typeof (obj['locali']) === 'string') {
 
-                obj['actividade_area'].push(
+                obj['locali'] = [
                     {
                         "id": obj['id'],
                         "vazio": obj['vazio'],
                         "cls": obj['cls'],
                         "observaciones": obj['observaciones'],
-                    }
-                );
-
-                obj['condiciones_climaticas'].push(
-                    {
-                        "id": obj['id'],
+                        "actividade_area":obj['actividade_area'],
                         "manha": obj['manha'],
                         "tarde": obj['tarde'],
                         "noche": obj['noche'],
-                    });
-
-
-                obj['imgs'].push(
-
-                    obj['img_1'],
-                    obj['img_2'],
-                    obj['img_3'],
-                );
+                        "img_1": obj['img_1'],
+                        "img_2": obj['img_2'],
+                        "img_3": obj['img_3'],
+                    }
+                ];
 
             }
 
+            delete obj['actividade_area']
+            delete obj['id']
             delete obj['img_1']
             delete obj['img_2']
             delete obj['img_3']
