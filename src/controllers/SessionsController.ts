@@ -18,11 +18,11 @@ export default class SessionsController {
 
     const authenticateUser = new AuthenticateUserService();
 
-    const { user, token } = await authenticateUser.execute({
+    const {  token } = await authenticateUser.execute({
       email,
       contrasena,
     });
 
-    return response.json({ user , token });
+    return response.json({  token });
   }
 }
