@@ -31,22 +31,22 @@ class Estacion{
     sigla!:string   ;
 
     @Column('varchar')
-    img_1:string  ;
+    img_1!:string  ;
 
     @Column('varchar')
-    img_2:string  ;
+    img_2!:string  ;
     
     @Column('varchar')
-    img_3:string;
+    img_3!:string;
 
     @Column('varchar')
-    img_1_obs:string  ;
+    img_1_obs!:string  ;
 
     @Column('varchar')
-    img_2_obs:string  ;
+    img_2_obs!:string  ;
     
     @Column('varchar')
-    img_3_obs:string;
+    img_3_obs!:string;
 }
 
 export default Estacion;
