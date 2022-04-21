@@ -7,6 +7,7 @@ interface IRequestDTO {
   este:string;
   norte:string;
   estacion:string;
+  sigla:string;
 }
 
 class CreateEstacionService {
@@ -14,10 +15,11 @@ class CreateEstacionService {
   public async execute({
     este,
     norte,
-    estacion
+    estacion,
+    sigla
   }: IRequestDTO): Promise<Estacion> {
     
-    if (!(estacion && este && norte)) {
+    if (!(estacion && este && norte && sigla)) {
       throw new AppError('¡Por favor, inserte todas las entradas!');
     }
 
@@ -32,7 +34,8 @@ class CreateEstacionService {
     const newEstacion = await estacionesRepository.create({
       este,
       norte,
-      estacion
+      estacion,
+      sigla
     });
 
     return newEstacion;

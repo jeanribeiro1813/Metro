@@ -6,6 +6,7 @@ interface ICreateEstacionDTO {
     este:string;
     norte:string;
     estacion:string;
+    sigla:string;
 }
 
 interface IIndexByViewDTO {
@@ -73,13 +74,15 @@ class EstacionesRepository implements IEstacionesRepository {
     public async create({
         este,
         norte,
-        estacion
+        estacion,
+        sigla
     }: ICreateEstacionDTO): Promise<Estacion> {
         this.ormRepository = getRepository(Estacion);
         const newEstacion = this.ormRepository.create({
             este,
             norte,
-            estacion
+            estacion,
+            sigla
         });
   
         await this.ormRepository.save(newEstacion);

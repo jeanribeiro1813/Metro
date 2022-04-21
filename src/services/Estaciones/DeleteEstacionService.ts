@@ -16,7 +16,7 @@ class DeleteEstacionService{
         const pmt = await pmtRepository.findOne({id});
 
         if (!pmt) {
-            throw new AppError('Não Existe ',402);
+            throw new AppError('Não Existe ');
           }
 
         await pmtRepository.remove(pmt);

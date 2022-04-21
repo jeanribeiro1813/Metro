@@ -30,7 +30,8 @@ export default class EstacionesController {
     const {
       este,
       norte,
-      estacion
+      estacion,
+      sigla
     } = request.body;
     
     const createEstacion = new CreateEstacionService();
@@ -39,7 +40,8 @@ export default class EstacionesController {
       { 
         este,
         norte,
-        estacion
+        estacion,
+        sigla
       }
     );
     
