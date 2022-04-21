@@ -1,4 +1,4 @@
-import { getCustomRepository } from 'typeorm'
+import { getCustomRepository } from 'typeorm';
 import AppError from '../../errors/AppError';
 
 import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
@@ -8,17 +8,18 @@ interface IRequestDTO {
 }
 
 class DeleteEstacionService{
-    public async remove ({id}:IRequestDTO): Promise<void> {
+
+    public async remove ({id}:IRequestDTO): Promise< void > {
         
-        const estacionesRepository = getCustomRepository(EstacionesRepository);
+        const pmtRepository = getCustomRepository(EstacionesRepository);
 
-        const estacion = await estacionesRepository.findById(id);
+        const pmt = await pmtRepository.findById(id);
 
-        if(!estacion){
-            throw new AppError("Estaciones não existe")
-        }
+        if (!pmt) {
+            throw new AppError('Não Existe ',402);
+          }
 
-        await estacionesRepository.remove(estacion);
+        await pmtRepository.remove(pmt);
 
     }
 }
