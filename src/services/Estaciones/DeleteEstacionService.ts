@@ -9,7 +9,7 @@ interface IRequestDTO {
 }
 
 class DeleteEstacionService{
-    public async remove ({id}:IRequestDTO): Promise<Estacion | undefined> {
+    public async remove ({id}:IRequestDTO): Promise<void> {
         
         const estacionesRepository = getCustomRepository(EstacionesRepository);
 
@@ -21,7 +21,6 @@ class DeleteEstacionService{
 
         await estacionesRepository.remove(estacion);
 
-        return estacion;
     }
 }
 

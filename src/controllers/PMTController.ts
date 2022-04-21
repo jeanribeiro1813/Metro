@@ -184,7 +184,7 @@ export default class PMTController {
 
     const deleteDepartamento = new DeletePMTService();
 
-   deleteDepartamento.remove({id});
+   await deleteDepartamento.remove({id});
 
     return response.json('Delete realizado com sucesso');
   }

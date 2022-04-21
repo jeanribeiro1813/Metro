@@ -38,7 +38,7 @@ export default class PilotesController {
     
     const loadPilotes = new DeletePiloteService();
 
-    const pilotes = await loadPilotes.remove({id});
+    await loadPilotes.remove({id});
 
     return response.json('Delete realizado com sucesso');
   }

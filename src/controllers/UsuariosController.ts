@@ -57,7 +57,7 @@ export default class UsuariosController {
   
       const deleteuser = new DeleteUserService();
   
-      deleteuser.remove({id});
+      await deleteuser.remove({id});
   
       return response.json('Delete realizado com sucesso');
     }

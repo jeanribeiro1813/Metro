@@ -94,7 +94,7 @@ export default class EstacionesController {
 
     const deleteEstacion = new DeleteEstacionService();
 
-    const deletado = deleteEstacion.remove({id})
+    await deleteEstacion.remove({id})
 
     return response.json('Delete Realizado com sucesso');
   }

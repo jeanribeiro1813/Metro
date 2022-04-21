@@ -88,7 +88,7 @@ export default class PMTController {
 
     const deleteAcciones = new DeleteInconsistenciaService();
 
-    deleteAcciones.remove({id});
+    await deleteAcciones.remove({id});
 
     return response.json('Delete realizado com sucesso');
   }

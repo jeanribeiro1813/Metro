@@ -87,7 +87,7 @@ export default class PMTController {
 
     const deleteAcciones = new DeleteAccionesService();
 
-    deleteAcciones.remove({id});
+    await deleteAcciones.remove({id});
 
     return response.json('Delete realizado com sucesso');
   }

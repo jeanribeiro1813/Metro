@@ -36,7 +36,7 @@ class PMT{
     @Column('varchar')
     acciones:string ;
 
-    @Column('varchar')
+    @Column()
     categoria:string;
 
     @Column('varchar')
