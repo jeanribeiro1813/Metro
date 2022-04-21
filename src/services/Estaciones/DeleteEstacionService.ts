@@ -1,7 +1,6 @@
 import { getCustomRepository } from 'typeorm'
 import AppError from '../../errors/AppError';
 
-import Estacion from '../../typeorm/entities/Estacion'
 import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
 
 interface IRequestDTO {
