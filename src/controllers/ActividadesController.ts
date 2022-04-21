@@ -5,7 +5,7 @@ import LoadActividadesService from '../services/Actividades/LoadActividadesServi
 import ShowActividadesService from '../services/Actividades/ShowActividadesService';
 import UpdateActividadesService from '../services/Actividades/UpdateActividadesService';
 import DeleteActividadesService from '../services/Actividades/DeleteActividadesService'
-
+import LoadActividadesFilterService from '../services/Actividades/LoadActividadesFilterService';
 export default class PMTController {
 
   // Controllers são responsáveis apenas para abstração dos códios das rotas e
@@ -51,7 +51,7 @@ export default class PMTController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params;
 
     const ShowAcciones = new ShowActividadesService();
 
@@ -92,6 +92,18 @@ export default class PMTController {
 
     return response.json('Delete realizado com sucesso');
   }
+
+  public async filtro(request: Request, response: Response): Promise<Response> {
+
+    const {id} = request.body;
+
+    const loadPilotes = new LoadActividadesFilterService();
+    
+    const loadfilter = await loadPilotes.filter({id});
+
+    return response.json(loadfilter);
+  }
+
 
 
 

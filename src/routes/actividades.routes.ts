@@ -16,10 +16,15 @@ const actividadesController = new ActividadesController();
 
 actividadesRouter.use(ensureAuthenticated);
 
-actividadesRouter.get('/load', actividadesController.index);
+actividadesRouter.get('/summary', actividadesController.index);
 
 actividadesRouter.post('/create', actividadesController.create);
-actividadesRouter.post('/show', actividadesController.show);
+
+actividadesRouter.get('/index/:id',celebrate({
+    [Segments.PARAMS]:{
+        id:Joi.string().required(),
+    }
+}), actividadesController.show);
 
 actividadesRouter.put('/update/:id',celebrate({
     [Segments.PARAMS]:{
@@ -32,5 +37,13 @@ actividadesRouter.delete('/delete/:id',celebrate({
         id:Joi.string().required(),
     }
 }),actividadesController.delete);
+
+
+actividadesRouter.post('/filter',celebrate({
+    [Segments.BODY]:{
+        id: Joi.string().required()
+    }
+}),actividadesController.filtro)
+
 
 export default actividadesRouter;

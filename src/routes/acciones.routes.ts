@@ -15,10 +15,16 @@ const accionesController = new AccionesController();
 
 accionesRouter.use(ensureAuthenticated);
 
-accionesRouter.get('/load', accionesController.index);
+accionesRouter.get('/summary', accionesController.index);
 
 accionesRouter.post('/create', accionesController.create);
-accionesRouter.post('/show', accionesController.show);
+
+accionesRouter.get('/index/:id',celebrate({
+    [Segments.PARAMS]:{
+        id:Joi.string().required(),
+    }
+}), accionesController.show);
+
 accionesRouter.put('/update/:id',celebrate({
     [Segments.PARAMS]:{
         id:Joi.string().required(),
@@ -30,5 +36,12 @@ accionesRouter.delete('/delete/:id',celebrate({
         id:Joi.string().required(),
     }
 }),accionesController.delete);
+
+accionesRouter.post('/filter',celebrate({
+    [Segments.BODY]:{
+        id: Joi.string().required()
+    }
+}),accionesController.filtro)
+
 
 export default accionesRouter;

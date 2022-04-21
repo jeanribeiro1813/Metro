@@ -11,10 +11,15 @@ const inconsistenciaController = new InconsistenciaController();
 
 inconsistenciaRouter.use(ensureAuthenticated);
 
-inconsistenciaRouter.get('/load', inconsistenciaController.index);
+inconsistenciaRouter.get('/summary', inconsistenciaController.index);
 
 inconsistenciaRouter.post('/create', inconsistenciaController.create);
-inconsistenciaRouter.post('/show', inconsistenciaController.show);
+
+inconsistenciaRouter.get('/index/:id',celebrate({
+    [Segments.PARAMS]:{
+        id:Joi.string().required(),
+    }
+}), inconsistenciaController.show);
 inconsistenciaRouter.put('/update/:id',celebrate({
     [Segments.PARAMS]:{
         id:Joi.string().required(),
@@ -26,5 +31,12 @@ inconsistenciaRouter.delete('/delete/:id',celebrate({
         id:Joi.string().required(),
     }
 }),inconsistenciaController.delete);
+
+inconsistenciaRouter.post('/filter',celebrate({
+    [Segments.BODY]:{
+        id: Joi.string().required()
+    }
+}),inconsistenciaController.filtro)
+
 
 export default inconsistenciaRouter;

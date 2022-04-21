@@ -4,7 +4,8 @@ import CreateAccionesService from '../services/Acciones/CreateAccionesService';
 import LoadAccionesService from '../services/Acciones/LoadAccionesService';
 import ShowAccionesService from '../services/Acciones/ShowAccionesService';
 import UpdateAccionesService from '../services/Acciones/UpdateAccionesService';
-import DeleteAccionesService from '../services/Acciones/DeleteAccionesService'
+import DeleteAccionesService from '../services/Acciones/DeleteAccionesService';
+import LoadAccionesFilterService from '../services/Acciones/LoadAccionesFilterService';
 
 export default class PMTController {
 
@@ -51,7 +52,7 @@ export default class PMTController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params;
 
     const ShowAcciones = new ShowAccionesService();
 
@@ -92,6 +93,16 @@ export default class PMTController {
     return response.json('Delete realizado com sucesso');
   }
 
+  public async filtro(request: Request, response: Response): Promise<Response> {
+
+    const {id} = request.body;
+
+    const loadPilotes = new LoadAccionesFilterService();
+    
+    const loadfilter = await loadPilotes.filter({id});
+
+    return response.json(loadfilter);
+  }
 
 
   

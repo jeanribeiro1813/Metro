@@ -17,7 +17,7 @@ interface IRequestDTO {
 }
 
 interface IResponseDTO {
-  user: User;
+  // user: User;
   token: string;
 }
 
@@ -50,12 +50,9 @@ class AuthenticateUserService {
     });
 
     user.contrasena = "";
-    
-    console.log(user.nombre)
-    console.log(token)
 
     return {
-      user,
+
       token,
     };
   }

@@ -5,6 +5,7 @@ import LoadInconsistenciaService from '../services/Inconsistencia/LoadInconsiste
 import ShowInconsistenciaService from '../services/Inconsistencia/ShowInconsistenciaService';
 import UpdateInconsistenciaService from '../services/Inconsistencia/UpdateInconsistenciaService';
 import DeleteInconsistenciaService from '../services/Inconsistencia/DeleteInconsistenciaService'
+import LoadInconsistenciaFilterService from '../services/Inconsistencia/LoadInconsistenciaFilterService'
 
 export default class PMTController {
 
@@ -51,7 +52,7 @@ export default class PMTController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params;
 
     const ShowAcciones = new ShowInconsistenciaService();
 
@@ -93,6 +94,16 @@ export default class PMTController {
     return response.json('Delete realizado com sucesso');
   }
 
+  public async filtro(request: Request, response: Response): Promise<Response> {
+
+    const {id} = request.body;
+
+    const loadPilotes = new LoadInconsistenciaFilterService();
+    
+    const loadfilter = await loadPilotes.filter({id});
+
+    return response.json(loadfilter);
+  }
 
 
   
