@@ -25,6 +25,8 @@ interface IEstacionesRepository {
     create(data: ICreateEstacionDTO): Promise<Estacion>;
     save(estacion: Estacion): Promise<Estacion>;
     search(estacion: Estacion): Promise<Estacion[] | undefined>;
+    remove(estacion: Estacion): Promise<Estacion>;
+
 }
 
 @EntityRepository(Estacion)
@@ -98,6 +100,12 @@ class EstacionesRepository implements IEstacionesRepository {
         });
       return estaciones;
     }
+
+    public async remove(estacion: Estacion): Promise<Estacion> {
+        this.ormRepository = getRepository(Estacion);
+        return this.ormRepository.remove(estacion);
+    }
+  
 
 }
 

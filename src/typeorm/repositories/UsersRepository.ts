@@ -17,6 +17,7 @@ interface IUsersRepository {
     findByEmail(email: string): Promise<User | undefined>;
     create(data: ICreateUserDTO): Promise<User>;
     save(user: User): Promise<User>;
+    remove(user: User): Promise<User>;
 }
   
 @EntityRepository(User)
@@ -68,6 +69,12 @@ class UsersRepository implements IUsersRepository {
 
          return this.ormRepository.save(user);
     }
+
+    public async remove(user: User): Promise<User> {
+        this.ormRepository = getRepository(User);
+        return this.ormRepository.remove(user);
+    }
+  
 
 }
 

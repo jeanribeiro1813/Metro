@@ -37,6 +37,9 @@ class PMT{
     acciones:string ;
 
     @Column('varchar')
+    categoria:string;
+
+    @Column('varchar')
     imagen1:string  ;
 
     @Column('varchar')

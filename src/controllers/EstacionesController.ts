@@ -4,6 +4,7 @@ import LoadEstacionesService from '../services/Estaciones/LoadEstacionesService'
 import CreateEstacionService from '../services/Estaciones/CreateEstacionService';
 import ShowEstacionService from '../services/Estaciones/ShowEstacionService';
 import UpdateEstacionService from '../services/Estaciones/UpdateEstacionService';
+import  DeleteEstacionService from '../services/Estaciones/DeleteEstacionService';
 
 export default class EstacionesController {
   // Controllers são responsáveis apenas para abstração dos códios das rotas e
@@ -47,7 +48,7 @@ export default class EstacionesController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params;
 
     const showEstacion = new ShowEstacionService();
 
@@ -58,8 +59,10 @@ export default class EstacionesController {
 
   public async update(request: Request , response: Response){
 
+    const {id} = request.params
+
     const{
-      id,
+      
       este,
       norte,
       estacion,
@@ -89,7 +92,11 @@ export default class EstacionesController {
 
     const {id} = request.params;
 
-    return response.json({"teste":id});
+    const deleteEstacion = new DeleteEstacionService();
+
+    const deletado = deleteEstacion.remove({id})
+
+    return response.json('Delete Realizado com sucesso');
   }
 
 }

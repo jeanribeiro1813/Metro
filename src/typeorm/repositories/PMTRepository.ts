@@ -9,6 +9,7 @@ interface ICreatePMTDTO {
     inconsistencia:string;
     acciones:string;
     fecha:string,
+    categoria:string,
     imagen1:string;
     descrimg1:string;
     imagen2: string;
@@ -91,7 +92,8 @@ class PMTRepository implements IPMTRepository {
         atividades,
         inconsistencia,
         acciones,
-	fecha,
+        fecha,
+        categoria,
         imagen1,
         descrimg1,
         imagen2,
@@ -121,7 +123,8 @@ class PMTRepository implements IPMTRepository {
         atividades,
         inconsistencia,
         acciones,
-	fecha,
+        fecha,
+        categoria,
         imagen1,
         descrimg1,
         imagen2,

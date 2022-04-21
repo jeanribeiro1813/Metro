@@ -19,14 +19,21 @@ const piloteImageController = new PiloteImageController();
 
 pilotesRouter.use(ensureAuthenticated);
 
-pilotesRouter.get('/index', pilotesController.index);
+pilotesRouter.get('/summary', pilotesController.index);
 pilotesRouter.post('/create', pilotesController.create);
-pilotesRouter.post('/show', pilotesController.show);
+
+pilotesRouter.get('/index/:id',celebrate({
+    [Segments.PARAMS]:{
+        id:Joi.string().required(),
+    }
+}), pilotesController.show);
+
 pilotesRouter.put('/update/:id',pilotesController.update);
-pilotesRouter.get('/summary', pilotesController.summary);
+pilotesRouter.get('/all', pilotesController.summary);
+
 pilotesRouter.delete('/delete/:id',pilotesController.delete);
 
-pilotesRouter.post('/load', celebrate({
+pilotesRouter.post('/filter', celebrate({
     [Segments.BODY]:{
         actividad:Joi.string().required(),
     }

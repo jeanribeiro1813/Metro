@@ -110,7 +110,7 @@ export default class PilotesController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params ;
 
     const showPilote = new ShowPiloteService();
 

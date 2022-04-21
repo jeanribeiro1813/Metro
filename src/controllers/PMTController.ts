@@ -41,6 +41,7 @@ export default class PMTController {
       n,
       fecha,
       atividades,
+      categoria,
       inconsistencia,
       acciones,
       imagen1,
@@ -74,6 +75,7 @@ export default class PMTController {
     atividades,
     inconsistencia,
     acciones,
+    categoria,
     imagen1,
     descrimg1,
     imagen2,
@@ -98,7 +100,7 @@ export default class PMTController {
 
   public async show(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.body;
+    const {id} = request.params;
 
     const ShowPmt = new ShowPMTService();
 
@@ -119,6 +121,7 @@ export default class PMTController {
       atividades,
       inconsistencia,
       acciones,
+      categoria,
       imagen1,
       descrimg1,
       imagen2,
@@ -150,6 +153,7 @@ export default class PMTController {
     atividades,
     inconsistencia,
     acciones,
+    categoria,
     imagen1,
     descrimg1,
     imagen2,
@@ -195,11 +199,11 @@ export default class PMTController {
 
   public async filtro(request: Request, response: Response): Promise<Response> {
 
-    const {atividades} = request.body
+    const {categoria} = request.body
 
     const loadPMTSummary = new LoadPMTFilterService();
     
-    const summary = await loadPMTSummary.filter({atividades});
+    const summary = await loadPMTSummary.filter({categoria});
 
     return response.json(summary);
   }

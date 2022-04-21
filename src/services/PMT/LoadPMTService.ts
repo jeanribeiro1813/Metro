@@ -18,6 +18,7 @@ interface IDescItemOfSummary {
     atividades:string;
     inconsistencia:string;
     acciones:string;
+    categoria:string;
     imagen1:string;
     descrimg1:string;
     imagen2: string;
@@ -57,6 +58,7 @@ class LoadPMTService{
                 atividades: use?.atividades,
                 inconsistencia: use?.inconsistencia,
                 acciones: use?.acciones,
+                categoria:use?.categoria,
                 imagen1: use?.imagen1,
                 descrimg1: use?.descrimg1,
                 imagen2: use?.imagen2,

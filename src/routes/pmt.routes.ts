@@ -19,18 +19,24 @@ const pmtController = new PMTController();
 
 pmtRouter.use(ensureAuthenticated);
 
-pmtRouter.get('/all', pmtController.index);
+pmtRouter.get('/summary', pmtController.index);
 
 // pmtRouter.get('/index', pmtController.index);
 pmtRouter.post('/create', pmtController.create);
-pmtRouter.post('/show', pmtController.show);
+
+pmtRouter.get('/index/:id',celebrate({
+    [Segments.PARAMS]:{
+        id:Joi.string().required(),
+    }
+}), pmtController.show);
+
 pmtRouter.put('/update/:id',pmtController.update);
 pmtRouter.delete('/delete/:id',pmtController.delete);
-pmtRouter.get('/summary', pmtController.summary);
+pmtRouter.get('/all', pmtController.summary);
 
-pmtRouter.post('/load',celebrate({
+pmtRouter.post('/Filter',celebrate({
     [Segments.BODY]:{
-        atividades: Joi.string().required()
+        categoria: Joi.string().required()
     }
 }),pmtController.filtro)
 

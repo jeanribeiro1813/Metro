@@ -14,6 +14,7 @@ interface IRequestDTO {
   atividades:string;
   inconsistencia:string;
   acciones:string;
+  categoria:string;
   imagen1:string;
   descrimg1:string;
   imagen2: string;
@@ -46,6 +47,7 @@ class CreatePMTService {
     atividades,
     inconsistencia,
     acciones,
+    categoria,
     imagen1,
     descrimg1,
     imagen2,
@@ -88,6 +90,7 @@ class CreatePMTService {
       atividades,
       inconsistencia,
       acciones,
+      categoria,
       imagen1,
       descrimg1,
       imagen2,

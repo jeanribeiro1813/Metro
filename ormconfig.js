@@ -1,4 +1,4 @@
-const ENV="local2prod";
+const ENV="local";
 if(ENV==="local"){
     module.exports = {
         "type": "postgres",

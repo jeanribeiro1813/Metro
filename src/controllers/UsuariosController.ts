@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
 
 import CreateUserService  from "../services/Users/CreateUserService";
-
-import { getRepository } from "typeorm";
-
-import User from '../typeorm/entities/User';
+import DeleteUserService from '../services/Users/DeleteUserService';
 
 
 export default class UsuariosController {
@@ -54,23 +51,15 @@ export default class UsuariosController {
     }
 
     //Detelete Usuario
-    public async delete(request: Request, response: Response){
+    public async delete(request: Request , response: Response){
 
-      const repositories = getRepository(User);
-    
-      const {nombre} = request.params;
- 
-      const userExist = await repositories.findOne({where:{nombre}});
- 
-      if(userExist){
-        return response.status(404).json('Não existe esse usuario');
-      }
-
-      await repositories.delete(nombre);
- 
-      return response.json("Delete feito");
-
-
-
+      const { id }  = request.params;
+  
+      const deleteuser = new DeleteUserService();
+  
+      deleteuser.remove({id});
+  
+      return response.json('Delete realizado com sucesso');
     }
+  
 }
