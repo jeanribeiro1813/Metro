@@ -1,4 +1,4 @@
-import { getCustomRepository, Not, IsNull } from 'typeorm'
+import { getCustomRepository } from 'typeorm'
 import AppError from '../../errors/AppError';
 
 import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
@@ -25,23 +25,23 @@ interface ISetUpLayerProps {
         southWestLat: number;
         northEastLng: number;
         northEastLat: number;
-    }
+    };
 }
 
 class SetUpSupervisionLayerService{
-    public async execute ({byView,view}:ISetUpLayerProps): Promise<ILayer> {
+    public async execute ({byView,view}:ISetUpLayerProps, theme:string): Promise<ILayer> {
         const supervisionRepository = getCustomRepository(SupervisionRepository);
 
-        const dados = byView && view? await supervisionRepository.indexByView({view}): await supervisionRepository.index();
+        const dados = byView && view? await supervisionRepository.indexByView({view}, theme): await supervisionRepository.index(theme);
 
         if(!dados){
             throw new AppError('Supervisions not found');
         }
 
-        const layer = "Supervision";
+        const layer = theme !== '' ? theme : 'Supervision';
         let markers = "";
         const source = dados.map((obj) =>{
-            const tag = "Supervision";
+            const tag = theme !== '' ? theme : 'Supervision';
             const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.pilha}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Editar</button>').openPopup()`;
             const tooltip  = `L.tooltip({
               direction: 'right',

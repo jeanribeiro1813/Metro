@@ -30,6 +30,7 @@ interface ILoadLayerProps {
 }
 
 class LoadLayersService{
+
     public async execute ({view}:ILoadLayerProps): Promise<ILayerOfMap[]> {
 
         const setUpSupervisionLayer = new SetUpSupervisionLayerService();
@@ -37,23 +38,33 @@ class LoadLayersService{
         const SetUpSSOMAPMTLayer = new SetUpSSOMAPMTLayerService();
 
         const setUpLayerProps = {
-            byView: view?true:false,
-            view
+            byView: view ? true:false,
+            view,
         }
-        const supervisionLayer = await setUpSupervisionLayer.execute(setUpLayerProps);
+
+        const supervisionLayer = await setUpSupervisionLayer.execute(setUpLayerProps, '');
+        const supervisionPilotesLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Pilotes');
+        const supervisionColummnasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Colummnas');
+        const supervisionCapitelLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Capitel');
+        const supervisionVigaLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Viga');
+        
+
         const estacionesLayer = await setUpEstacionesLayer.execute(setUpLayerProps);
         const SSOMAPMTLayer = await SetUpSSOMAPMTLayer.execute(setUpLayerProps); 
-
-
-        if(!supervisionLayer && !estacionesLayer){
-           throw new AppError("Layers not found");
-        }
         
         const layers = <ILayerOfMap[]>[
             supervisionLayer,
+            supervisionPilotesLayer,
+            supervisionColummnasLayer,
+            supervisionCapitelLayer,
+            supervisionVigaLayer,
             estacionesLayer,
             SSOMAPMTLayer
         ];
+
+        if(!layers){
+            throw new AppError("Layers not found");
+         }
 
 
 

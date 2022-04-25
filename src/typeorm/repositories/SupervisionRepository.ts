@@ -1,4 +1,4 @@
-import { Repository, EntityRepository, getRepository, Not, IsNull } from 'typeorm';
+import { Repository, EntityRepository, getRepository, Not, IsNull, ILike } from 'typeorm';
 
 import Supervision from '../entities/Supervision';
 
@@ -40,8 +40,8 @@ interface IIndexByViewDTO {
 }
 
 interface ISupervisionRepository {
-    index(): Promise<Supervision[] | undefined>
-    indexByView(view: IIndexByViewDTO): Promise<Supervision[] | undefined>
+    index(theme: string): Promise<Supervision[] | undefined>
+    indexByView(view: IIndexByViewDTO, theme: string): Promise<Supervision[] | undefined>
     findById(id: string): Promise<Supervision | undefined>;
     // findBySupervision(supervision: string): Promise<Supervision | undefined>;
     create(data: ICreateSupervisionDTO): Promise<Supervision>;
@@ -54,22 +54,23 @@ interface ISupervisionRepository {
 class SupervisionRepository implements ISupervisionRepository {
     private ormRepository: Repository<Supervision>;
 
-    public async index(): Promise<Supervision[] | undefined> {
+    public async index(theme:string): Promise<Supervision[] | undefined> {
         this.ormRepository = getRepository(Supervision);
       
         const supervision = await this.ormRepository.find({
             n: Not(IsNull()),
+            actividad: ILike(`%${theme}%`),
         });
   
         return supervision;
     }
 
-    public async indexByView({view}:IIndexByViewDTO): Promise<Supervision[] | undefined> {
+    public async indexByView({view}:IIndexByViewDTO, theme:string): Promise<Supervision[] | undefined> {
         this.ormRepository = getRepository(Supervision);
         const supervision = await this.ormRepository.manager.query(`
         SELECT *
         FROM prod.supervision
-        WHERE n is not null AND st_intersects(ST_MakeEnvelope(${view.southWestLng}, ${view.southWestLat}, ${view.northEastLng}, ${view.northEastLat}, 4326),ST_GeomFromText('POINT('||e||' '||n||')',4326)) 
+        WHERE n is not null AND actividad ilike '%${theme}%' AND st_intersects(ST_MakeEnvelope(${view.southWestLng}, ${view.southWestLat}, ${view.northEastLng}, ${view.northEastLat}, 4326),ST_GeomFromText('POINT('||e||' '||n||')',4326)) 
         `);
     
         return supervision;
