@@ -42,7 +42,7 @@ class SetUpSSOMAPMTLayerService{
         let markers = "";
         const source = dados.map((obj) =>{
             const tag = "ssoma_pmt";
-            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${SSOMAPMT.acciones}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Edit</button>').openPopup()`;
+            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.acciones}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Edit</button>').openPopup()`;
             const tooltip  = `L.tooltip({
               direction: 'right',
               permanent: true,

@@ -68,9 +68,9 @@ class UpdateSSOMAPMTService{
         }:IRequestDTO
     ): Promise<SSOMAPMT | undefined>
     {
-        const SSOMAPMTRepository = getCustomRepository(SSOMAPMTRepository);
+        const ssomapmtRepository = getCustomRepository(SSOMAPMTRepository);
 
-        const SSOMAPMT = await SSOMAPMTRepository.findById(id);
+        const SSOMAPMT = await ssomapmtRepository.findById(id);
 
         if(!SSOMAPMT){
             throw new AppError('SSOMAPMT does not exists!'); 
@@ -102,7 +102,7 @@ class UpdateSSOMAPMTService{
         SSOMAPMT.imagen8 = imagen8 ? imagen8 : SSOMAPMT.imagen8;
         SSOMAPMT.descrimg8 = descrimg8 ? descrimg8 : SSOMAPMT.descrimg8;
         
-        await SSOMAPMTRepository.save(SSOMAPMT);
+        await ssomapmtRepository.save(SSOMAPMT);
 
         return SSOMAPMT;
      
