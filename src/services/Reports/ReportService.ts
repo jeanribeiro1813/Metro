@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import Reportes from '../../typeorm/entities/Reportes';
 import ReportesRepositoy from '../../typeorm/repositories/ReportesRepository';
 
-class ReporteService {
+class ReportService {
 
     public async show(): Promise<Reportes[] | undefined> {
 
@@ -124,4 +124,4 @@ class ReporteService {
 
 }
 
-export default ReporteService;
+export default ReportService;

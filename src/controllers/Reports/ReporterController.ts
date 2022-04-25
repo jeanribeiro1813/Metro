@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ReporteSupervisionService from '../../services/Reports/Reportservice';
+import ReporteSupervisionService from '../../services/Reports/ReportService';
 
 
 export default class ReporterSupervisionController {
