@@ -5,8 +5,8 @@ import uploadConfig from '../config/upload';
 interface IStorageProvider {
   saveAvatarFile(file:string) : Promise<string>;
   deleteAvatarFile(file:string) : Promise<void>;
-  savePiloteImgFile(file:string) : Promise<string>;
-  deletePiloteImgFile(file:string) : Promise<void>;  
+  saveSupervisionImgFile(file:string) : Promise<string>;
+  deleteSupervisionImgFile(file:string) : Promise<void>;  
   saveEstacionImgFile(file:string) : Promise<string>;
   deleteEstacionImgFile(file:string) : Promise<void>;  
 }
@@ -41,9 +41,9 @@ export default class DiskStorageProvider implements IStorageProvider{
       await fs.promises.unlink(filePath);
     }
 
-    public async savePiloteImgFile(file:string): Promise<string>{
+    public async saveSupervisionImgFile(file:string): Promise<string>{
       const from = path.resolve(uploadConfig.uploadsFolder, file);
-      const to = path.resolve(uploadConfig.pilotesImgsUploadFolder, file)
+      const to = path.resolve(uploadConfig.supervisionImgsUploadFolder, file)
       await fs.promises.rename(
         from,
         to,
@@ -52,9 +52,9 @@ export default class DiskStorageProvider implements IStorageProvider{
       return file;
     }
 
-    public async deletePiloteImgFile(file:string): Promise<void>{
+    public async deleteSupervisionImgFile(file:string): Promise<void>{
 
-      const filePath = path.resolve(uploadConfig.pilotesImgsUploadFolder, file);
+      const filePath = path.resolve(uploadConfig.supervisionImgsUploadFolder, file);
 
       //verificando se o arquivo existe -> fs.promises.stat(filePath);
       try{

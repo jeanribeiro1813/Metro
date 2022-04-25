@@ -8,7 +8,7 @@ interface IUploadConfig {
   driver: 'disk';
   uploadsFolder: string;
   avatarsUploadFolder: string;
-  pilotesImgsUploadFolder: string;
+  supervisionImgsUploadFolder: string;
   estacionesImgsUploadFolder: string;
   multer: {
     storage: StorageEngine;
@@ -20,7 +20,7 @@ export default {
     driver: 'disk',
     uploadsFolder: uploadsFolder,
     avatarsUploadFolder: path.resolve(uploadsFolder,'avatars'),
-    pilotesImgsUploadFolder: path.resolve(uploadsFolder,'pilotes'),
+    supervisionImgsUploadFolder: path.resolve(uploadsFolder,'supervision'),
     estacionesImgsUploadFolder: path.resolve(uploadsFolder,'estaciones'),
 
     multer: {

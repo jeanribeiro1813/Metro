@@ -11,15 +11,15 @@ class DeleteEstacionService{
 
     public async remove ({id}:IRequestDTO): Promise< void > {
         
-        const pmtRepository = getRepository(Estacion);
+        const SSOMAPMTRepository = getRepository(Estacion);
 
-        const pmt = await pmtRepository.findOne({id});
+        const SSOMAPMT = await SSOMAPMTRepository.findOne({id});
 
-        if (!pmt) {
+        if (!SSOMAPMT) {
             throw new AppError('Não Existe ');
           }
 
-        await pmtRepository.remove(pmt);
+        await SSOMAPMTRepository.remove(SSOMAPMT);
 
     }
 }

@@ -30,7 +30,7 @@ class UpdateEstacionService{
         const storagedEstacion = await estacionesRepository.findById(id);
 
         if(!storagedEstacion){
-            throw new AppError('Pilote does not exists!'); 
+            throw new AppError('Supervision does not exists!'); 
         }
 
         storagedEstacion.este = este ? este : storagedEstacion.este; 

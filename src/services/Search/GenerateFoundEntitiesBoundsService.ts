@@ -2,8 +2,8 @@ import { getCustomRepository, getRepository, getManager } from 'typeorm'
 
 import Estacion from '../../typeorm/entities/Estacion'
 import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
-import Pilote from '../../typeorm/entities/Pilote'
-import PilotesRepository from '../../typeorm/repositories/PilotesRepository'
+import Supervision from '../../typeorm/entities/Supervision'
+import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 
 interface IRequestDTO {
     geomFromText: string[];

@@ -13,15 +13,15 @@ class DeleteAccionesService{
 
     public async remove ({id}:IRequests): Promise< void > {
         
-        const pmtRepository = getCustomRepository(AccionesRepository);
+        const SSOMAPMTRepository = getCustomRepository(AccionesRepository);
 
-        const pmt = await pmtRepository.findById(id);
+        const SSOMAPMT = await SSOMAPMTRepository.findById(id);
 
-        if (!pmt) {
+        if (!SSOMAPMT) {
             throw new AppError('Não Existe ',402);
           }
 
-        await pmtRepository.remove(pmt);
+        await SSOMAPMTRepository.remove(SSOMAPMT);
 
     }
 }

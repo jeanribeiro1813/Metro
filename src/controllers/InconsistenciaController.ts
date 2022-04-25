@@ -7,7 +7,7 @@ import UpdateInconsistenciaService from '../services/Inconsistencia/UpdateIncons
 import DeleteInconsistenciaService from '../services/Inconsistencia/DeleteInconsistenciaService'
 import LoadInconsistenciaFilterService from '../services/Inconsistencia/LoadInconsistenciaFilterService'
 
-export default class PMTController {
+export default class SSOMAPMTController {
 
   // Controllers são responsáveis apenas para abstração dos códios das rotas e
   // não devem possuir regra de negócio.
@@ -38,9 +38,9 @@ export default class PMTController {
       descripcion
     } = request.body;
     
-    const createPmt = new CreateInconsistenciaService();
+    const createSSOMAPMT = new CreateInconsistenciaService();
 
-    const pmt = await createPmt.execute(
+    const SSOMAPMT = await createSSOMAPMT.execute(
       { 
         id,
         descripcion
@@ -98,9 +98,9 @@ export default class PMTController {
 
     const {id} = request.body;
 
-    const loadPilotes = new LoadInconsistenciaFilterService();
+    const loadSupervision = new LoadInconsistenciaFilterService();
     
-    const loadfilter = await loadPilotes.filter({id});
+    const loadfilter = await loadSupervision.filter({id});
 
     return response.json(loadfilter);
   }

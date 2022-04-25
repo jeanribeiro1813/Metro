@@ -1,12 +1,12 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export default class CreatePilotes1643510378521 implements MigrationInterface {
+export default class CreateSupervision1643510378521 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table(
                 {
-                    name: 'controle_pilha',
+                    name: 'supervision',
                     columns: [
                         {
                             name: 'id',
@@ -41,7 +41,7 @@ export default class CreatePilotes1643510378521 implements MigrationInterface {
                             isNullable:true
                         },
                         {
-                            name: 'pilha',
+                            name: 'supervision',
                             type: 'varchar',
                             isNullable:true
                         },
@@ -161,7 +161,7 @@ export default class CreatePilotes1643510378521 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('controle_pilha');
+        await queryRunner.dropTable('supervision');
     }
 
 }

@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm'
 import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
 import Estacion from '../../typeorm/entities/Estacion'
 
-class LoadPilotesService{
+class LoadSupervisionService{
     public async execute (): Promise<Estacion[] | undefined> {
         
         const estacionesRepository = getCustomRepository(EstacionesRepository);
@@ -13,4 +13,4 @@ class LoadPilotesService{
     }
 }
 
-export default LoadPilotesService;
+export default LoadSupervisionService;

@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json({limit: '100mb'}));
 app.use(express.urlencoded({ extended: true, limit: '100mb'}))
 app.use('/files/avatar', express.static(uploadConfig.avatarsUploadFolder));
-app.use('/files/pilha', express.static(uploadConfig.pilotesImgsUploadFolder));
+app.use('/files/supervision', express.static(uploadConfig.supervisionImgsUploadFolder));
 app.use('/files/ubicacion', express.static(uploadConfig.estacionesImgsUploadFolder));
 app.use(routes);
 

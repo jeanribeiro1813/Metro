@@ -20,24 +20,24 @@ class CreateAccionesService {
     
   }: IRequestDTO): Promise<Acciones> {
     
-    const pmtRepository = getCustomRepository(AccionesRepository);
+    const SSOMAPMTRepository = getCustomRepository(AccionesRepository);
     
-    const checkPMTExists = await pmtRepository.findById(id);
+    const checkSSOMAPMTExists = await SSOMAPMTRepository.findById(id);
 
-    if (!checkPMTExists) {
+    if (!checkSSOMAPMTExists) {
 
-      if (checkPMTExists) {
+      if (checkSSOMAPMTExists) {
         throw new AppError('Acciones already exists.',404);
       }
 
     }
 
-    const pmt = await pmtRepository.create({
+    const SSOMAPMT = await SSOMAPMTRepository.create({
       id,
       descripcion,
     });
 
-    return pmt;
+    return SSOMAPMT;
   }
 }
 

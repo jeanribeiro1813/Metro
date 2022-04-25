@@ -1,6 +1,6 @@
-import SetUpPilotesLayerService from './SetUpPilotesLayerService'
+import SetUpSupervisionLayerService from './SetUpSupervisionLayerService'
 import SetUpEstacionesLayerService from './SetUpEstacionesLayerService'
-import SetUpPMTLayerService from './SetUpPMTLayerService'
+import SetUpSSOMAPMTLayerService from './SetUpSSOMAPMTLayerService'
 
 
 import AppError from '../../errors/AppError';
@@ -32,27 +32,27 @@ interface ILoadLayerProps {
 class LoadLayersService{
     public async execute ({view}:ILoadLayerProps): Promise<ILayerOfMap[]> {
 
-        const setUpPilotesLayer = new SetUpPilotesLayerService();
+        const setUpSupervisionLayer = new SetUpSupervisionLayerService();
         const setUpEstacionesLayer = new SetUpEstacionesLayerService();
-        const SetUpPMTLayer = new SetUpPMTLayerService();
+        const SetUpSSOMAPMTLayer = new SetUpSSOMAPMTLayerService();
 
         const setUpLayerProps = {
             byView: view?true:false,
             view
         }
-        const pilotesLayer = await setUpPilotesLayer.execute(setUpLayerProps);
+        const supervisionLayer = await setUpSupervisionLayer.execute(setUpLayerProps);
         const estacionesLayer = await setUpEstacionesLayer.execute(setUpLayerProps);
-        const pmtLayer = await SetUpPMTLayer.execute(setUpLayerProps); 
+        const SSOMAPMTLayer = await SetUpSSOMAPMTLayer.execute(setUpLayerProps); 
 
 
-        if(!pilotesLayer && !estacionesLayer){
+        if(!supervisionLayer && !estacionesLayer){
            throw new AppError("Layers not found");
         }
         
         const layers = <ILayerOfMap[]>[
-            pilotesLayer,
+            supervisionLayer,
             estacionesLayer,
-            pmtLayer
+            SSOMAPMTLayer
         ];
 
 

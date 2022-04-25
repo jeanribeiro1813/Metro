@@ -22,11 +22,11 @@ class CreateInconsistenciaService {
     
     const inconsistenciaRepository = getCustomRepository(InconsistenciaRepository);
     
-    const checkPMTExists = await inconsistenciaRepository.findById(id);
+    const checkSSOMAPMTExists = await inconsistenciaRepository.findById(id);
 
-    if (!checkPMTExists) {
+    if (!checkSSOMAPMTExists) {
 
-      if (checkPMTExists) {
+      if (checkSSOMAPMTExists) {
         throw new AppError('Actividades already exists.',404);
       }
 

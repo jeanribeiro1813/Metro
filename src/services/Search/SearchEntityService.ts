@@ -2,18 +2,18 @@ import { getCustomRepository, getRepository } from 'typeorm'
 
 import Estacion from '../../typeorm/entities/Estacion'
 import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
-import Pilote from '../../typeorm/entities/Pilote'
-import PilotesRepository from '../../typeorm/repositories/PilotesRepository'
+import Supervision from '../../typeorm/entities/Supervision'
+import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 import GenerateFoundEntitiesBoundsService from './GenerateFoundEntitiesBoundsService'
 
 interface IRequestDTO {
     selectedClass: string;
-    entity: Estacion | Pilote;
+    entity: Estacion | Supervision;
 }
 
 interface IResponseDTO {
     class: string;
-    entities: Estacion[] | Pilote[] | undefined;
+    entities: Estacion[] | Supervision[] | undefined;
     bounds?: number[][] | undefined;
 }
 
@@ -22,13 +22,13 @@ class SearchEntityService{
     public async execute ({selectedClass, entity}:IRequestDTO): Promise<IResponseDTO | undefined> {
 
         const generateBounds = new GenerateFoundEntitiesBoundsService();
-        if(selectedClass === "Pilotes"){
-            const pilotesRepository = getCustomRepository(PilotesRepository);
+        if(selectedClass === "Supervision"){
+            const supervisionRepository = getCustomRepository(SupervisionRepository);
 
-            const pilotes = await pilotesRepository.search(entity as Pilote);
+            const supervision = await supervisionRepository.search(entity as Supervision);
 
-            if(pilotes?.length){
-                const geomsStr = pilotes?.map(item=>{
+            if(supervision?.length){
+                const geomsStr = supervision?.map(item=>{
                     return `ST_GeomFromText('POINT(${item.n} ${item.e})',4326)`
                 })
     
@@ -36,13 +36,13 @@ class SearchEntityService{
     
                 return {
                     class:selectedClass,
-                    entities: pilotes,
+                    entities: supervision,
                     bounds: result?.bounds
                 }
             }else{
                 return {
                     class:selectedClass,
-                    entities: pilotes
+                    entities: supervision
                 }
             }
 

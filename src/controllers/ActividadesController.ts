@@ -6,7 +6,7 @@ import ShowActividadesService from '../services/Actividades/ShowActividadesServi
 import UpdateActividadesService from '../services/Actividades/UpdateActividadesService';
 import DeleteActividadesService from '../services/Actividades/DeleteActividadesService'
 import LoadActividadesFilterService from '../services/Actividades/LoadActividadesFilterService';
-export default class PMTController {
+export default class SSOMAPMTController {
 
   // Controllers são responsáveis apenas para abstração dos códios das rotas e
   // não devem possuir regra de negócio.
@@ -37,9 +37,9 @@ export default class PMTController {
       descripcion
     } = request.body;
     
-    const createPmt = new CreateActividadesService();
+    const createSSOMAPMT = new CreateActividadesService();
 
-    const pmt = await createPmt.execute(
+    const SSOMAPMT = await createSSOMAPMT.execute(
       { 
         id,
         descripcion
@@ -97,9 +97,9 @@ export default class PMTController {
 
     const {id} = request.body;
 
-    const loadPilotes = new LoadActividadesFilterService();
+    const loadSupervision = new LoadActividadesFilterService();
     
-    const loadfilter = await loadPilotes.filter({id});
+    const loadfilter = await loadSupervision.filter({id});
 
     return response.json(loadfilter);
   }

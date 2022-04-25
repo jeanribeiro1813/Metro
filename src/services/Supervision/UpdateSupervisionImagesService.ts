@@ -1,10 +1,10 @@
 import { getCustomRepository } from 'typeorm';
 
-import AppError from '../errors/AppError';
+import AppError from '../../errors/AppError';
 
-import Supervision from '../typeorm/entities/Supervision';
-import SupervisionRepository from '../typeorm/repositories/SupervisionRepository';
-import StorageProvider from '../providers/DiskStorageProvider';
+import Supervision from '../../typeorm/entities/Supervision';
+import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository';
+import StorageProvider from '../../providers/DiskStorageProvider';
 
 
 
@@ -14,7 +14,7 @@ interface IRequestDTO {
   img_2: string;
   img_3: string;
 }
-class UpdateSupervisionImagesArrayService {
+class UpdateSupervisionImagesService {
 
   public async execute({
     supervision_id,
@@ -62,4 +62,4 @@ class UpdateSupervisionImagesArrayService {
   }
 }
 
-export default UpdateSupervisionImagesArrayService;
+export default UpdateSupervisionImagesService;

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import ActividadesController from '../controllers/ActividadesController';
-// import PiloteImageController from '../controllers/PiloteImageController';
+// import SupervisionImageController from '../controllers/SupervisionImageController';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
@@ -11,7 +11,7 @@ import {celebrate, Joi, Segments} from 'celebrate';
 const actividadesRouter = Router();
 
 const actividadesController = new ActividadesController();
-// const piloteImageController = new PiloteImageController();
+// const supervisionImageController = new SupervisionImageController();
 
 
 actividadesRouter.use(ensureAuthenticated);
