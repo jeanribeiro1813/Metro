@@ -11,6 +11,7 @@ interface IRequestDTO {
     locali?:string;
     descri?:string;
     tipologia?:string;
+    pilha?:string;
     e?:string;
     n?: string;
     subcontra?:string;
@@ -44,6 +45,7 @@ class UpdateSupervisionService{
             locali,
             descri,
             tipologia,
+            pilha,
             e,
             n,
             subcontra,
@@ -82,6 +84,7 @@ class UpdateSupervisionService{
         supervisionExisr.locali = locali ? locali : supervisionExisr.locali;
         supervisionExisr.descri = descri ? descri : supervisionExisr.descri;
         supervisionExisr.tipologia = tipologia ? tipologia : supervisionExisr.tipologia;
+        supervisionExisr.pilha = pilha ? pilha : supervisionExisr.pilha;
         supervisionExisr.e = e ? e : supervisionExisr.e;
         supervisionExisr.n = n ? n : supervisionExisr.n;
         supervisionExisr.subcontra = subcontra ? subcontra : supervisionExisr.subcontra;
