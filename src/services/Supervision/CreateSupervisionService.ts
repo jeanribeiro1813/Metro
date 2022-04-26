@@ -60,7 +60,7 @@ class CreateSupervisionService {
     img_2,
     img_3,
     
-  }: IRequestDTO): Promise<Supervision> {
+  }: IRequestDTO): Promise<Supervision []> {
     
     if (!(locali && e && n && pilha)) {
       throw new AppError('¡Por favor, inserte todas las entradas!');
@@ -69,7 +69,7 @@ class CreateSupervisionService {
     
     const checkSupervisionExists = await supervisionRepository.findByPilha(pilha);
 
-    if (checkSupervisionExists) {
+    if (checkSupervisionExists?.length) {
       throw new AppError('Supervision already exists.');
     }
 

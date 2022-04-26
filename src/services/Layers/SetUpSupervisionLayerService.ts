@@ -42,10 +42,10 @@ class SetUpSupervisionLayerService{
             throw new AppError('Supervisions not found');
         }
 
-        const layer = theme !== '' ? theme : 'Supervision';
+        const layer = theme === 'Pilotes' || theme === 'Columnas' || theme === 'Capitel' || theme === 'Vigas' ? theme = 'supervision' : theme.toLowerCase();
         let markers = "";
         const source = dados.map((obj) =>{
-            const tag = theme !== '' ? theme : 'Supervision';
+            const tag = theme;
             const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.pilha}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Editar</button>').openPopup()`;
             const tooltip  = `L.tooltip({
               direction: 'right',

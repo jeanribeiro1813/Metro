@@ -43,7 +43,7 @@ interface ISupervisionRepository {
     index(theme: string): Promise<Supervision[] | undefined>
     indexByView(view: IIndexByViewDTO, theme: string): Promise<Supervision[] | undefined>
     findById(id: string): Promise<Supervision | undefined>;
-    // findBySupervision(supervision: string): Promise<Supervision | undefined>;
+    findByPilha(pilha: string): Promise<Supervision []| undefined>;
     create(data: ICreateSupervisionDTO): Promise<Supervision>;
     save(supervision: Supervision): Promise<Supervision>;
     saveWithPicture(supervision: Supervision): Promise<Supervision | undefined>;
@@ -69,7 +69,7 @@ class SupervisionRepository implements ISupervisionRepository {
         this.ormRepository = getRepository(Supervision);
         const supervision = await this.ormRepository.manager.query(`
         SELECT *
-        FROM prod.supervision
+        FROM supervision
         WHERE n is not null AND actividad ilike '%${theme}%' AND st_intersects(ST_MakeEnvelope(${view.southWestLng}, ${view.southWestLat}, ${view.northEastLng}, ${view.northEastLat}, 4326),ST_GeomFromText('POINT('||e||' '||n||')',4326)) 
         `);
     
@@ -84,10 +84,12 @@ class SupervisionRepository implements ISupervisionRepository {
         return supervision;
     }
 
-    public async findByPilha(id: string): Promise<Supervision | undefined> {
+    public async findByPilha(pilha: string): Promise<Supervision [] | undefined> {
         this.ormRepository = getRepository(Supervision);
-      
-        const supervision = await this.ormRepository.findOne(id);
+
+        const supervision = await this.ormRepository.query(
+            `select * from supervision where pilha ilike '${pilha}';`
+        );
   
         return supervision;
     }

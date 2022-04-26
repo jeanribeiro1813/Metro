@@ -44,7 +44,7 @@ class LoadLayersService{
 
         const supervisionLayer = await setUpSupervisionLayer.execute(setUpLayerProps, '');
         const supervisionPilotesLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Pilotes');
-        const supervisionColummnasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Colummnas');
+        const supervisionColummnasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Columnas');
         const supervisionCapitelLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Capitel');
         const supervisionVigaLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Vigas');
         

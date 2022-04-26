@@ -1,9 +1,5 @@
-import { getCustomRepository, getRepository, getManager } from 'typeorm'
+import { getManager } from 'typeorm'
 
-import Ubicacion from '../../typeorm/entities/Ubicacion'
-import UbicacionesRepository from '../../typeorm/repositories/UbicacionesRepository'
-import Supervision from '../../typeorm/entities/Supervision'
-import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 
 interface IRequestDTO {
     geomFromText: string[];
@@ -11,6 +7,8 @@ interface IRequestDTO {
 
 interface IResponse {
     bounds: number[][];
+    x?: string;
+    y?: string;
 }
 
 class GenerateFoundEntitiesBoundsService{
@@ -21,15 +19,16 @@ class GenerateFoundEntitiesBoundsService{
                 ST_Collect(
                     ARRAY[${geomFromText.toString()}]
                 )   
-            ) As box;
+            ) As box, St_X(${geomFromText.toString()}) as x, St_Y(${geomFromText.toString()}) as y;
         `
         const result = await getManager().query(query);
-        
         
         
         if(result.length){
 
             let {box} = result[0];
+            let {x} = result[0];
+            let {y} = result[0];
 
             box = box.replace("BOX(","");
             box = box.replace(")","");
@@ -42,7 +41,7 @@ class GenerateFoundEntitiesBoundsService{
                 [Number(coords[2]), Number(coords[3])]
             ]
 
-            return {bounds};
+            return {bounds, y, x};
         }else{
             return undefined;
         }
