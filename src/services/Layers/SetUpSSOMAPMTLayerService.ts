@@ -35,10 +35,10 @@ class SetUpSSOMAPMTLayerService{
         const dados = byView && view? await ssomaPmtRepository.indexByView({view}): await ssomaPmtRepository.index();
 
         if(!dados){
-            throw new AppError('SSOMAPMT not found');
+            throw new AppError('SSOMAyPMT not found');
         }
 
-        const layer = "ssoma_pmt";
+        const layer = "SSOMAyPMT";
         let markers = "";
         const source = dados.map((obj) =>{
             const tag = "ssoma_pmt";
@@ -49,7 +49,7 @@ class SetUpSSOMAPMTLayerService{
               interactive: true,
               noWrap: true,
               opacity: 0.9
-            }).setContent('<label class="textEstaciones">${obj.id}</label>')`
+            }).setContent('<label class="textUbicaciones">${obj.id}</label>')`
 
             const markerIcon = `L.icon({
                 iconUrl: 'https://metropanama-test.herokuapp.com/files/ubicacion/trem.png',
@@ -71,7 +71,7 @@ class SetUpSSOMAPMTLayerService{
             return itemOfSource;
         })
 
-        const strLayerGroup = `L.layerGroup([${markers}])`;
+        const strLayerGroup = `[${markers}]`;
 
         return {
             layer,

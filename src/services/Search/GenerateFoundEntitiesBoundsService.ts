@@ -1,7 +1,7 @@
 import { getCustomRepository, getRepository, getManager } from 'typeorm'
 
-import Estacion from '../../typeorm/entities/Estacion'
-import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
+import Ubicacion from '../../typeorm/entities/Ubicacion'
+import UbicacionesRepository from '../../typeorm/repositories/UbicacionesRepository'
 import Supervision from '../../typeorm/entities/Supervision'
 import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 

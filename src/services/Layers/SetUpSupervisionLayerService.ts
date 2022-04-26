@@ -16,6 +16,7 @@ interface IItemOfSource {
     description: string;
     latitude: string;
     longitude: string;
+    
 }
 
 interface ISetUpLayerProps {
@@ -26,10 +27,13 @@ interface ISetUpLayerProps {
         northEastLng: number;
         northEastLat: number;
     };
+    
 }
 
 class SetUpSupervisionLayerService{
+
     public async execute ({byView,view}:ISetUpLayerProps, theme:string): Promise<ILayer> {
+
         const supervisionRepository = getCustomRepository(SupervisionRepository);
 
         const dados = byView && view? await supervisionRepository.indexByView({view}, theme): await supervisionRepository.index(theme);
@@ -64,13 +68,13 @@ class SetUpSupervisionLayerService{
         })
 
         markers=markers.replace(/,([^,]*)$/, '$1');
-        const strLayerGroup = `L.layerGroup([${markers}])`;
-        const strMarkers = `[${markers}]`;
+        const strLayerGroup = `[${markers}]`;
+        //const strMarkers = `[${markers}]`;
         return {
             layer,
             source,
             strLayerGroup,
-            strMarkers,
+        //    strMarkers,
         };
     }
 }

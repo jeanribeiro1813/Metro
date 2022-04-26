@@ -2,7 +2,7 @@ import {Router} from 'express';
 
 import supervisionRoutes from './supervision.routes';
 import usuariosRouter from './usuarios.routes'
-import estacionesRouter from './estaciones.routes';
+import ubicacionesRouter from './ubicaciones.routes';
 import sessionsRouter from './sessions.routes';
 import layersRouter from './layers.routes';
 import profileRouter from './profile.routes';
@@ -17,7 +17,7 @@ const routes = Router();
 
 routes.use('/supervision',supervisionRoutes);
 routes.use('/usuarios',usuariosRouter);
-routes.use('/estaciones',estacionesRouter);
+routes.use('/ubicaciones',ubicacionesRouter);
 routes.use('/sessions',sessionsRouter);
 routes.use('/layers',layersRouter);
 routes.use('/profile',profileRouter);

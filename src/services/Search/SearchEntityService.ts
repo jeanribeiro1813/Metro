@@ -1,19 +1,19 @@
 import { getCustomRepository, getRepository } from 'typeorm'
 
-import Estacion from '../../typeorm/entities/Estacion'
-import EstacionesRepository from '../../typeorm/repositories/EstacionesRepository'
+import Ubicacion from '../../typeorm/entities/Ubicacion'
+import UbicacionesRepository from '../../typeorm/repositories/UbicacionesRepository'
 import Supervision from '../../typeorm/entities/Supervision'
 import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 import GenerateFoundEntitiesBoundsService from './GenerateFoundEntitiesBoundsService'
 
 interface IRequestDTO {
     selectedClass: string;
-    entity: Estacion | Supervision;
+    entity: Ubicacion | Supervision;
 }
 
 interface IResponseDTO {
     class: string;
-    entities: Estacion[] | Supervision[] | undefined;
+    entities: Ubicacion[] | Supervision[] | undefined;
     bounds?: number[][] | undefined;
 }
 
@@ -48,13 +48,13 @@ class SearchEntityService{
 
 
         }
-        else if(selectedClass === "Estaciones"){
-            const estacionesRepository = getCustomRepository(EstacionesRepository);
+        else if(selectedClass === "Ubicaciones"){
+            const ubicacionesRepository = getCustomRepository(UbicacionesRepository);
 
-            const estaciones = await estacionesRepository.search(entity as Estacion);
+            const ubicaciones = await ubicacionesRepository.search(entity as Ubicacion);
 
-            if(estaciones?.length){
-                const geomsStr = estaciones?.map(item=>{
+            if(ubicaciones?.length){
+                const geomsStr = ubicaciones?.map(item=>{
                     return `ST_GeomFromText('POINT(${item.norte} ${item.este})',4326)`
                 })
     
@@ -62,13 +62,13 @@ class SearchEntityService{
     
                 return {
                     class:selectedClass,
-                    entities: estaciones,
+                    entities: ubicaciones,
                     bounds: result?.bounds
                 }
             }else{
                 return {
                     class:selectedClass,
-                    entities: estaciones
+                    entities: ubicaciones
                 }
             }
 

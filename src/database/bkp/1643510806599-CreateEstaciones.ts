@@ -1,12 +1,12 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export default class CreateEstaciones1643510806599 implements MigrationInterface {
+export default class CreateUbicaciones1643510806599 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table(
                 {
-                    name: 'ubicacion_estaciones_aeb',
+                    name: 'ubicacion_ubicaciones_aeb',
                     columns: [
                         {
                             name: 'id',
@@ -24,7 +24,7 @@ export default class CreateEstaciones1643510806599 implements MigrationInterface
                             type: 'varchar',
                         },        
                         {
-                            name: 'estacion',
+                            name: 'ubicacion',
                             type: 'varchar',
                         },                                                                                                                                                                                                           
                         {
@@ -49,7 +49,7 @@ export default class CreateEstaciones1643510806599 implements MigrationInterface
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('ubicacion_estaciones_aeb');
+        await queryRunner.dropTable('ubicacion_ubicaciones_aeb');
     }
 
 }

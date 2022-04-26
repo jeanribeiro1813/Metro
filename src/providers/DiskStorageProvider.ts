@@ -7,8 +7,8 @@ interface IStorageProvider {
   deleteAvatarFile(file:string) : Promise<void>;
   saveSupervisionImgFile(file:string) : Promise<string>;
   deleteSupervisionImgFile(file:string) : Promise<void>;  
-  saveEstacionImgFile(file:string) : Promise<string>;
-  deleteEstacionImgFile(file:string) : Promise<void>;  
+  saveUbicacionImgFile(file:string) : Promise<string>;
+  deleteUbicacionImgFile(file:string) : Promise<void>;  
 }
 
 export default class DiskStorageProvider implements IStorageProvider{
@@ -68,9 +68,9 @@ export default class DiskStorageProvider implements IStorageProvider{
       await fs.promises.unlink(filePath);
     }
 
-    public async saveEstacionImgFile(file:string): Promise<string>{
+    public async saveUbicacionImgFile(file:string): Promise<string>{
       const from = path.resolve(uploadConfig.uploadsFolder, file);
-      const to = path.resolve(uploadConfig.estacionesImgsUploadFolder, file)
+      const to = path.resolve(uploadConfig.ubicacionesImgsUploadFolder, file)
       await fs.promises.rename(
         from,
         to,
@@ -79,9 +79,9 @@ export default class DiskStorageProvider implements IStorageProvider{
       return file;
     }
 
-    public async deleteEstacionImgFile(file:string): Promise<void>{
+    public async deleteUbicacionImgFile(file:string): Promise<void>{
 
-      const filePath = path.resolve(uploadConfig.estacionesImgsUploadFolder, file);
+      const filePath = path.resolve(uploadConfig.ubicacionesImgsUploadFolder, file);
 
       //verificando se o arquivo existe -> fs.promises.stat(filePath);
       try{
