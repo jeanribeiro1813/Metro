@@ -48,6 +48,7 @@ interface ISSOMAPMTRepository {
     create(data: ICreateSSOMAPMTDTO): Promise<ssomaPmt>;
     save(ssomaPmt: ssomaPmt): Promise<ssomaPmt>;
     saveWithPicture(ssomaPmt: ssomaPmt): Promise<ssomaPmt | undefined>;
+    search(ssomaPmt: ssomaPmt): Promise<ssomaPmt[] | undefined>;
 }
 
 @EntityRepository(ssomaPmt)
@@ -174,6 +175,15 @@ class SSOMAPMTRepository implements ISSOMAPMTRepository {
         return dados;
     }
 
+    public async search(ssoma: ssomaPmt): Promise<ssomaPmt[] | undefined> {
+        
+        this.ormRepository = getRepository(ssomaPmt);
+
+        return await this.ormRepository.find({
+            where: ssoma,
+        });
+
+    }
   
 
 }

@@ -35,14 +35,14 @@ class SetUpSSOMAPMTLayerService{
         const dados = byView && view? await ssomaPmtRepository.indexByView({view}): await ssomaPmtRepository.index();
 
         if(!dados){
-            throw new AppError('SSOMAyPMT not found');
+            throw new AppError('SSOMA y PMT not found');
         }
 
-        const layer = "SSOMAyPMT";
+        const layer = "ssomaypmt";
         let markers = "";
         const source = dados.map((obj) =>{
-            const tag = "ssoma_pmt";
-            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.acciones}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Edit</button>').openPopup()`;
+            const tag = "SSOMA Y PMT";
+            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.id}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Edit</button>').openPopup()`;
             const tooltip  = `L.tooltip({
               direction: 'right',
               permanent: true,
@@ -51,8 +51,9 @@ class SetUpSSOMAPMTLayerService{
               opacity: 0.9
             }).setContent('<label class="textUbicaciones">${obj.id}</label>')`
 
+            //jean
             const markerIcon = `L.icon({
-                iconUrl: 'https://metropanama-test.herokuapp.com/files/ubicacion/trem.png',
+                iconUrl: 'files/ubicacion/trem.png',
                         iconSize:     [38, 40], 
                         iconAnchor:   [35, 15], 
                         popupAnchor:  [0, 0] 

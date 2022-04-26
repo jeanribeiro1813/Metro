@@ -23,7 +23,7 @@ routes.use('/layers',layersRouter);
 routes.use('/profile',profileRouter);
 routes.use('/search',searchRoutes);
 routes.use('/reports',reportRoutes);
-routes.use('/SSOMAPMT',SSOMAPMTRoutes);
+routes.use('/ssomaypmt',SSOMAPMTRoutes);
 routes.use('/acciones',accionesRoutes);
 routes.use('/actividades',actividadesRoutes);
 routes.use('/inconsistencia',inconsistenciaRoutes);

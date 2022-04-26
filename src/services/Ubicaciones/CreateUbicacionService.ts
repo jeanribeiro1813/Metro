@@ -18,7 +18,7 @@ class CreateUbicacionService {
     ubicacion,
     sigla
   }: IRequestDTO): Promise<Ubicacion> {
-    
+
     if (!(ubicacion && este && norte && sigla)) {
       throw new AppError('¡Por favor, inserte todas las entradas!');
     }

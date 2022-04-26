@@ -38,7 +38,7 @@ class SetUpUbicacionesLayerService{
             throw new AppError('Ubicaciones not found');
         }
 
-        const layer = "Ubicaciones";
+        const layer = "ubicaciones";
         let markers = "";
         const source = ubicaciones.map((ubicacion) =>{
             const tag = "Ubicácion";

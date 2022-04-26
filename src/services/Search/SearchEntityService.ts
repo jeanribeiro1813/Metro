@@ -1,19 +1,21 @@
-import { getCustomRepository } from 'typeorm'
+import { getCustomRepository } from 'typeorm';
 
-import Ubicacion from '../../typeorm/entities/Ubicacion'
-import UbicacionesRepository from '../../typeorm/repositories/UbicacionesRepository'
-import Supervision from '../../typeorm/entities/Supervision'
-import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
-import GenerateFoundEntitiesBoundsService from './GenerateFoundEntitiesBoundsService'
+import Ubicacion from '../../typeorm/entities/Ubicacion';
+import UbicacionesRepository from '../../typeorm/repositories/UbicacionesRepository';
+import SSOMAYPMT from '../../typeorm/entities/SSOMAPMT';
+import SSOMAYPMTRepository from '../../typeorm/repositories/SSOMAPMTRepository';
+import Supervision from '../../typeorm/entities/Supervision';
+import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository';
+import GenerateFoundEntitiesBoundsService from './GenerateFoundEntitiesBoundsService';
 
 interface IRequestDTO {
     selectedClass: string;
-    entity: Ubicacion | Supervision;
+    entity: Ubicacion | Supervision | SSOMAYPMT;
 }
 
 interface IResponseDTO {
     class: string;
-    entities: Ubicacion[] | Supervision[] | undefined;
+    entities: Ubicacion[] | Supervision[] | SSOMAYPMT[] | undefined;
     bounds?: number[][] | undefined;
     x?: string;
     y?: string;
@@ -69,6 +71,30 @@ class SearchEntityService{
                 }
             }
         }
+        else if(selectedClass.toLowerCase() === "ssomaypmt"){
+            
+            const ssomaypmtRepository = getCustomRepository(SSOMAYPMTRepository);
+
+            const ssomaypmt = await ssomaypmtRepository.search(entity as SSOMAYPMT);
+
+            if(ssomaypmt?.length){
+
+                const geomsStr = ssomaypmt?.map(item=>{
+                    return `ST_GeomFromText('POINT(${item.e} ${item.n})',4326)`
+                })
+    
+                const result = geomsStr ? await generateBounds.execute({geomFromText:geomsStr}) : undefined;
+    
+                return {
+                    class:selectedClass,
+                    entities: ssomaypmt,
+                    bounds: result?.bounds,
+                    x: result?.x,
+                    y: result?.y,
+                }
+            }
+        }
+
 
         return undefined;
     }

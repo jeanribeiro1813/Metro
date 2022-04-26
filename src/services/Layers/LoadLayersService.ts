@@ -42,7 +42,6 @@ class LoadLayersService{
             view,
         }
 
-        const supervisionLayer = await setUpSupervisionLayer.execute(setUpLayerProps, '');
         const supervisionPilotesLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Pilotes');
         const supervisionColummnasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Columnas');
         const supervisionCapitelLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Capitel');
@@ -52,7 +51,6 @@ class LoadLayersService{
         const ubicacionesLayer = await setUpUbicacionesLayer.execute(setUpLayerProps);
         
         const layers = <ILayerOfMap[]>[
-            supervisionLayer,
             supervisionPilotesLayer,
             supervisionColummnasLayer,
             supervisionCapitelLayer,
