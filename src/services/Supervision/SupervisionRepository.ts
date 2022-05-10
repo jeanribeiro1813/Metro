@@ -1,6 +1,6 @@
 import { Repository, EntityRepository, getRepository, Not, IsNull, ILike } from 'typeorm';
 
-import Supervision from '../entities/Supervision';
+import Supervision from '../../typeorm/entities/Supervision';
 
 interface ICreateSupervisionDTO {
   chave: number;

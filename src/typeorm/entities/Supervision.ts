@@ -12,59 +12,92 @@ class Supervision{
     @PrimaryGeneratedColumn('uuid')
     id!:string  ;
 
-    @Column('varchar')
-    ordem_serv:string ;
+    @Column()
+    chave: number;
+
+    @Column()
+    orden:number ;
 
     @Column('varchar')
-    mod_viaduto:string   ;
+    modulacion_viaducto:string   ;
 
     @Column('varchar')
-    locali:string   ;
+    sector:string   ;
 
     @Column('varchar')
-    descri:string ;
+    estructura:string   ;
 
     @Column('varchar')
-    tipologia:string  ;
+    ubicacion:string   ;
 
     @Column('varchar')
-    pilha:string   ;
+    descripcion:string ;
 
     @Column('varchar')
-    e:string   ;
+    tipologia_cimentacion:string  ;
 
     @Column('varchar')
-    n:string  ;
+    nomenclatura:string  ;
 
     @Column('varchar')
-    subcontra:string  ;
+    actividad:string  ;
+
+    @Column()
+    armadura20:boolean  ;
+    
+    @Column()
+    ejecucion50:boolean  ;
+
+    @Column()
+    liberacion30: boolean;
+
+    @Column()
+    contratista:string  ;
+    
+    @Column('varchar')
+    subcontratista:string  ;
 
     @Column('varchar')
-    parede_guia:string ;
+    muro_guia:string  ;
+    
+    @Column()
+    inicio_perforacion:string  ;
+
+    @Column()
+    fin_perforacion:string  ;
+    
+    @Column()
+    vaciado:string  ;
+
+    @Column()
+    csl:string  ;
 
     @Column('varchar')
-    inicio_perfu:string ;
+    descabezado:string   ;
+
+    @Column()
+    longitud:number   ;
+
+    @Column()
+    diametro:number  ;
+
+    @Column()
+    rend_perforacion:number  ;
+
+    @Column()
+    duracion_vaciado:number ;
 
     @Column('varchar')
-    fim_perfu:string ;
+    duracion_vaciado_csl:string ;
 
     @Column('varchar')
-    vazio:string ;
+    estatus:string ;
 
     @Column('varchar')
-    cls:string ;
+    estatus_csl:string ;
 
     @Column('varchar')
-    long_metro:string  ;
-
-    @Column('varchar')
-    diam:string  ;
-
-    @Column('varchar')
-    rend_metro_dia :string   ;
-
-    @Column('varchar')
-    status:string  ;
+    nota:string ;
 
     @Column('varchar')
     maquina:string  ;
@@ -73,34 +106,40 @@ class Supervision{
     ensaio_csl:string  ;
 
     @Column('varchar')
-    obs:string  ;
+    observaciones :string   ;
+
+    @Column('varchar')
+    n:string  ;
+
+    @Column('varchar')
+    e:string  ;
 
     @Column('varchar')
     img_1:string  ;
 
     @Column('varchar')
     img_2:string  ;
-    
+
     @Column('varchar')
-    img_3:string;
-    
+    img_3:string  ;
+
     @Column('varchar')
     img_1_obs:string  ;
-
-    @Column('varchar')
-    img_2_obs:string  ;
     
     @Column('varchar')
-    img_3_obs:string;
-
+    img_2_obs:string;
+    
     @Column('varchar')
-    actividad:string;
+    img_3_obs:string  ;
 
     @CreateDateColumn()
     created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date; 
+
+    @Column()
+    inicio_construccion:string;
 
 
 }

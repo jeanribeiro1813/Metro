@@ -3,102 +3,152 @@ import Supervision from '../../typeorm/entities/Supervision';
 import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository';
 import AppError from '../../errors/AppError';
 
+
+
 interface IRequestDTO {
-  actividad:string,
-  ordem_serv:string,
-  mod_viaduto:string,
-  locali:string;
-  descri:string;
-  tipologia:string;
-  pilha:string;
-  e:string;
-  n: string;
-  subcontra:string;
-  parede_guia:string;
-  inicio_perfu:string;
-  fim_perfu:string;
-  vazio:string;
-  cls:string;
-  long_metro:string;
-  diam:string;
-  rend_metro_dia: string;
-  status:string;
-  maquina:string;
-  ensaio_csl:string;
-  obs:string;
-  img_1:string;
-  img_2:string;
-  img_3:string;
+  chave: number;
+  orden:number ;
+  modulacion_viaducto:string   ;
+  sector:string   ;
+  estructura:string   ;
+  ubicacion:string   ;
+  descripcion:string ;
+  tipologia_cimentacion:string  ;
+  nomenclatura:string  ;
+  actividad:string  ;
+  armadura20:boolean  ;
+  ejecucion50:boolean  ;
+  liberacion30:boolean  ;
+  contratista:string  ;
+  subcontratista:string  ;
+  muro_guia:string  ;
+  inicio_perforacion:string  ;
+  fin_perforacion:string  ;
+  vaciado:string  ;
+  csl:string  ;
+  descabezado:string   ;
+  longitud:number   ;
+  diametro:number  ;
+  rend_perforacion:number  ;
+  duracion_vaciado:number ;
+  duracion_vaciado_csl:string ;
+  estatus:string ;
+  estatus_csl:string ;
+  nota:string ;
+  maquina:string  ;
+  ensaio_csl:string  ;
+  observaciones :string   ;
+  n:string  ;
+  e:string  ;
+  img_1:string  ;
+  img_2:string  ;
+  img_3:string  ;
+  img_1_obs:string  ;
+  img_2_obs:string;
+  img_3_obs:string  ;
+  inicio_construccion:string  ;
 }
 
 class CreateSupervisionService {
 
   public async execute({
-    actividad,
-    ordem_serv,
-    mod_viaduto,
-    locali,
-    descri,
-    tipologia,
-    pilha,
-    e,
-    n,
-    subcontra,
-    parede_guia,
-    inicio_perfu,
-    fim_perfu,
-    vazio,
-    cls,
-    long_metro,
-    diam,
-    rend_metro_dia,
-    status,
-    maquina,
-    ensaio_csl,
-    obs,
-    img_1,
-    img_2,
-    img_3,
+  chave,
+  orden,
+  modulacion_viaducto,
+  sector,
+  estructura,
+  ubicacion,
+   descripcion,
+  tipologia_cimentacion,
+  nomenclatura,
+  actividad,
+  armadura20,
+  ejecucion50,
+  liberacion30,
+  contratista,
+  subcontratista,
+  muro_guia,
+  inicio_perforacion,
+  fin_perforacion,
+  vaciado,
+  csl,
+  descabezado,
+  longitud,
+  diametro,
+  rend_perforacion,
+  duracion_vaciado,
+  duracion_vaciado_csl,
+  estatus,
+  estatus_csl,
+  nota,
+  maquina,
+  ensaio_csl,
+  observaciones,
+  n,
+  e,
+  img_1,
+  img_2,
+  img_3,
+  img_1_obs,
+  img_2_obs,
+  img_3_obs,
+  inicio_construccion
     
   }: IRequestDTO): Promise<Supervision> {
     
-    if (!(locali && e && n && pilha)) {
+    if (!(ubicacion && e && n && nomenclatura)) {
       throw new AppError('¡Por favor, inserte todas las entradas!');
     }
     const supervisionRepository = getCustomRepository(SupervisionRepository);
     
-    const checkSupervisionExists = await supervisionRepository.findByPilha(pilha);
+    const checkSupervisionExists = await supervisionRepository.findByNomeclatura(nomenclatura);
 
     if (checkSupervisionExists?.length) {
       throw new AppError('Supervision already exists.');
     }
 
     const supervision = await supervisionRepository.create({
-      actividad,
-      ordem_serv,
-      mod_viaduto,
-      locali,
-      descri,
-      tipologia,
-      pilha,
-      e,
-      n,
-      subcontra,
-      parede_guia,
-      inicio_perfu,
-      fim_perfu,
-      vazio,
-      cls,
-      long_metro,
-      diam,
-      rend_metro_dia,
-      status,
-      maquina,
-      ensaio_csl,
-      obs,
-      img_1,
-      img_2,
-      img_3,
+      chave,
+  orden,
+  modulacion_viaducto,
+  sector,
+  estructura,
+  ubicacion,
+   descripcion,
+  tipologia_cimentacion,
+  nomenclatura,
+  actividad,
+  armadura20,
+  ejecucion50,
+  liberacion30,
+  contratista,
+  subcontratista,
+  muro_guia,
+  inicio_perforacion,
+  fin_perforacion,
+  vaciado,
+  csl,
+  descabezado,
+  longitud,
+  diametro,
+  rend_perforacion,
+  duracion_vaciado,
+  duracion_vaciado_csl,
+  estatus,
+  estatus_csl,
+  nota,
+  maquina,
+  ensaio_csl,
+  observaciones,
+  n,
+  e,
+  img_1,
+  img_2,
+  img_3,
+  img_1_obs,
+  img_2_obs,
+  img_3_obs,
+  inicio_construccion
       
     });
 

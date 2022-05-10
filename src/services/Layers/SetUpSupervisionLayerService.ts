@@ -46,20 +46,20 @@ class SetUpSupervisionLayerService{
         let markers = "";
         const source = dados.map((obj) =>{
             const tag = theme;
-            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.pilha}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Editar</button>').openPopup()`;
+            const popup = `L.popup({ autoClose: false, closeOnClick: false }).setContent('<label class="textPrimary">${tag}:</label><br><label class="textSecondary">${obj.nomenclatura}</label>'+'<br><button value="${layer}---${tag}---${obj.id}" class="popupButton" onclick="handleEditClick(this.value)">Editar</button>').openPopup()`;
             const tooltip  = `L.tooltip({
               direction: 'right',
               permanent: true,
               interactive: true,
               noWrap: true,
               opacity: 0.9
-            }).setContent('<label class="textSecondary">${obj.pilha}</label>')`
+            }).setContent('<label class="textSecondary">${obj.nomenclatura}</label>')`
             markers = markers + `L.marker([${obj.n}, ${obj.e}]).bindPopup(${popup}).bindTooltip(${tooltip}),`            
             
             const itemOfSource = {
                 id: obj.id,
                 tag,
-                description:obj.pilha,
+                description:obj.nomenclatura,
                 latitude:obj.n,
                 longitude:obj.e,
             }

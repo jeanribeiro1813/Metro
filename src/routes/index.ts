@@ -12,6 +12,7 @@ import SSOMAPMTRoutes from './ssomapmt.routes'
 import accionesRoutes from './acciones.routes'
 import actividadesRoutes from './actividades.routes';
 import inconsistenciaRoutes from './incosistencia.routes';
+import supervisionRouter from './supervision.avanco.routes'
 
 const routes = Router();
 
@@ -27,6 +28,7 @@ routes.use('/ssomaypmt',SSOMAPMTRoutes);
 routes.use('/acciones',accionesRoutes);
 routes.use('/actividades',actividadesRoutes);
 routes.use('/inconsistencia',inconsistenciaRoutes);
+routes.use('/supervisionAvanco',supervisionRouter);
 
 
 
