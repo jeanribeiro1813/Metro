@@ -39,7 +39,7 @@ app.use(
     },
   );
 
-const PORT = process.env.PORT || 3334;
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, ()=>{
     console.log(`Server started at port ${PORT}!`)
 })

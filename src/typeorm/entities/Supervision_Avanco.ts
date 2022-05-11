@@ -1,12 +1,9 @@
 import { 
-    Entity,
+    ViewEntity,
     Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn
 } from "typeorm";
     
-@Entity('supervision')
+@ViewEntity('supervision_avanco')
 class Supervision{
     
     @Column()
