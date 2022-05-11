@@ -7,6 +7,9 @@ import {
 class Supervision{
     
     @Column()
+    actividad: string;
+    
+    @Column()
     avanco!:string  ;
 
     @Column('bigint')

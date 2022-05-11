@@ -64,6 +64,9 @@ class Supervision{
     inicio_perforacion:string  ;
 
     @Column()
+    inicio_construccion:string;
+
+    @Column()
     fin_perforacion:string  ;
     
     @Column()
@@ -133,13 +136,12 @@ class Supervision{
     img_3_obs:string  ;
 
     @CreateDateColumn()
-    created_at: Date;
+    created_at?: Date;
 
     @UpdateDateColumn()
-    updated_at: Date; 
+    updated_at?: Date; 
 
-    @Column()
-    inicio_construccion:string;
+  
 
 
 }

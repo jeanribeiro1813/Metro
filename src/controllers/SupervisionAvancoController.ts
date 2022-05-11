@@ -20,11 +20,11 @@ export default class SupervisionController {
 
   public async filter(request: Request, response: Response): Promise<Response> {
 
-    const {avanco} = request.body;
+    const {actividad} = request.body;
 
     const loadSupervision = new FilterLoad();
 
-    const supervision = await loadSupervision.filter({avanco});
+    const supervision = await loadSupervision.filter({actividad});
 
     return response.json(supervision);
   }

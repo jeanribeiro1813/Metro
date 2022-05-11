@@ -20,6 +20,7 @@ interface ICreateSupervisionDTO {
   subcontratista:string  ;
   muro_guia:string  ;
   inicio_perforacion:string  ;
+  inicio_construccion:string;
   fin_perforacion:string  ;
   vaciado:string  ;
   csl:string  ;
@@ -43,7 +44,7 @@ interface ICreateSupervisionDTO {
   img_1_obs:string  ;
   img_2_obs:string;
   img_3_obs:string  ;
-  inicio_construccion:string;
+
 
 }
 

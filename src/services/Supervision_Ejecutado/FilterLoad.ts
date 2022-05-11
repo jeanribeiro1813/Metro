@@ -1,13 +1,13 @@
 import { getCustomRepository } from "typeorm";
 import AppError from "../../errors/AppError";
 import Supervision_Avanco  from '../../typeorm/entities/Supervision_Ejecutado';
-import SupervisionAvancoRepository  from '../../typeorm/repositories/SupervisionEjeculadoRepository';
+import SupervisionAvancoRepository  from '../../typeorm/repositories/SupervisionEjecutadoRepository';
 
 
 
 interface IResponseDTO {
 
-    descripcion:string  ;
+    actividad:string  ;
   
 }
 
@@ -16,12 +16,12 @@ interface IResponseDTO {
 
 
 class FilterService{
-    public async filter ({descripcion}:IResponseDTO): Promise<Supervision_Avanco[] | AppError> {
+    public async filter ({actividad}:IResponseDTO): Promise<Supervision_Avanco[] | AppError> {
         
         const Repository = getCustomRepository(SupervisionAvancoRepository);
 
         const result = await Repository.createQueryBuilder().select()
-        .where('descripcion ILIKE :descripcion ', {descripcion: `%${descripcion}%`}).getMany();
+        .where('actividad ILIKE :actividad ', {actividad: `%${actividad}%`}).getMany();
 
         if(!result){
             throw new AppError ('Não Existe',405);

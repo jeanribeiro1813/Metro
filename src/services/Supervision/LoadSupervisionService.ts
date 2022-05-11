@@ -24,6 +24,7 @@ interface IRequestDTO {
   subcontratista:string  ;
   muro_guia:string  ;
   inicio_perforacion:string  ;
+  inicio_construccion:string;
   fin_perforacion:string  ;
   vaciado:string  ;
   csl:string  ;
@@ -47,7 +48,7 @@ interface IRequestDTO {
   img_1_obs:string  ;
   img_2_obs:string;
   img_3_obs:string  ;
-  inicio_construccion:string;
+
   
   }
 
@@ -80,6 +81,7 @@ class LoadSupervisionService{
                 subcontratista:use?.subcontratista,
                 muro_guia:use?.muro_guia,
                 inicio_perforacion:use?.inicio_perforacion,
+                inicio_construccion:use?.inicio_construccion,
                 fin_perforacion:use?.fin_perforacion,
                 vaciado:use?.vaciado,
                 csl:use?.csl,
@@ -88,6 +90,7 @@ class LoadSupervisionService{
                 diametro:use?.diametro,
                 rend_perforacion:use?.rend_perforacion,
                 duracion_vaciado:use?.duracion_vaciado,
+                duracion_vaciado_csl:use?.duracion_vaciado_csl,
                 estatus:use?.estatus,
                 estatus_csl:use?.estatus_csl,
                 nota:use?.nota,
@@ -102,7 +105,7 @@ class LoadSupervisionService{
                 img_1_obs:use?.img_1_obs,
                 img_2_obs:use?.img_2_obs,
                 img_3_obs:use?.img_3_obs,
-                inicio_construccion:use?.inicio_construccion
+              
 
 
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import FilterLoad from '../services/Supervision_Ejeculado/FilterLoad';
+import FilterLoad from '../services/Supervision_Ejecutado/FilterLoad';
 
 
 export default class SupervisionController {
@@ -20,11 +20,11 @@ export default class SupervisionController {
 
   public async filter(request: Request, response: Response): Promise<Response> {
 
-    const {descripcion} = request.body;
+    const {actividad} = request.body;
 
     const loadSupervision = new FilterLoad();
 
-    const supervision = await loadSupervision.filter({descripcion});
+    const supervision = await loadSupervision.filter({actividad});
 
     return response.json(supervision);
   }

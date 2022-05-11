@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import SupervisionEjeculadoController from '../controllers/SupervisionEjeculadoController';
+import SupervisionEjeculadoController from '../controllers/SupervisionEjecutadoController';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
@@ -15,7 +15,7 @@ supervisionRouter.use(ensureAuthenticated);
 
 supervisionRouter.post('/filter', celebrate({
     [Segments.BODY]:{
-        descripcion:Joi.string().required(),
+        actividad:Joi.string().required(),
     }
 }),
 supervisionEjeculadoController.filter);

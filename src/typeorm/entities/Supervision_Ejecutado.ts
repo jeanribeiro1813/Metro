@@ -5,6 +5,9 @@ import {
     
 @ViewEntity('supervision_ejecutado')
 class Supervision{
+
+    @Column()
+    actividad:string;
     
     @Column('character varying')
     sector:string  ;

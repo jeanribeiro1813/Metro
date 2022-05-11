@@ -7,7 +7,7 @@ import SupervisionAvancoRepository  from '../../typeorm/repositories/Supervision
 
 interface IResponseDTO {
 
-    avanco:string  ;
+    actividad:string  ;
   
 }
 
@@ -16,12 +16,12 @@ interface IResponseDTO {
 
 
 class FilterService{
-    public async filter ({avanco}:IResponseDTO): Promise<Supervision_Avanco[] | AppError> {
+    public async filter ({actividad}:IResponseDTO): Promise<Supervision_Avanco[] | AppError> {
         
         const Repository = getCustomRepository(SupervisionAvancoRepository);
 
         const result = await Repository.createQueryBuilder().select()
-        .where('avanco ILIKE :avanco ', {avanco: `%${avanco}%`}).getMany();
+        .where('actividad ILIKE :actividad ', {actividad: `%${actividad}%`}).getMany();
 
         if(!result){
             throw new AppError ('Não Existe',405);

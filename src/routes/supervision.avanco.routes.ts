@@ -15,7 +15,7 @@ supervisionRouter.use(ensureAuthenticated);
 
 supervisionRouter.post('/filter', celebrate({
     [Segments.BODY]:{
-        avanco:Joi.string().required(),
+        actividad:Joi.string().required(),
     }
 }),
 supervisionAvancoController.filter);

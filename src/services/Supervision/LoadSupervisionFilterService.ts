@@ -1,10 +1,11 @@
 import { getCustomRepository, getRepository } from 'typeorm'
 
 import Supervision from '../../typeorm/entities/Supervision'
-import SupervisionRepository from '../../typeorm/repositories/SupervisionRepository'
 
 interface IRequestDTO {
     actividad: string;
+    created_at?:string;
+    updated_at?:string;
 }
 
 class LoadSupervisionFilterService{
@@ -15,6 +16,12 @@ class LoadSupervisionFilterService{
         const cargoRepo = await loadService.createQueryBuilder().select()
         .where(' actividad :: text  ilike :actividad', {actividad: `%${actividad}%`}).getMany();
 
+        cargoRepo?.map((x) =>{
+            delete x.created_at
+            delete x.updated_at
+        })
+
+        
         return cargoRepo;
     }
 }

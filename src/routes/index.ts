@@ -13,7 +13,8 @@ import accionesRoutes from './acciones.routes'
 import actividadesRoutes from './actividades.routes';
 import inconsistenciaRoutes from './incosistencia.routes';
 import supervisionavancoRouter from './supervision.avanco.routes'
-import supervisionejeculadoRouter from './supervision.ejeculado.routes'
+import supervisionejeculadoRouter from './supervision.ejecutado.routes'
+import viaductoRouter from './viaducto.routes'
 
 
 const routes = Router();
@@ -31,7 +32,8 @@ routes.use('/acciones',accionesRoutes);
 routes.use('/actividades',actividadesRoutes);
 routes.use('/inconsistencia',inconsistenciaRoutes);
 routes.use('/supervisionAvanco',supervisionavancoRouter);
-routes.use('/supervisionEjeculado',supervisionejeculadoRouter);
+routes.use('/supervisionEjecutado',supervisionejeculadoRouter);
+routes.use('/viaducto',viaductoRouter);
 
 
 
