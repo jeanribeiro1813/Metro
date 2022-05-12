@@ -59,6 +59,9 @@ class Supervision{
 
     @Column('varchar')
     muro_guia:string  ;
+
+    @Column('varchar')
+    periodo:string  ;
     
     @Column()
     inicio_perforacion:string  ;

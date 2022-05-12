@@ -20,6 +20,7 @@ const supervisionImageController = new SupervisionImageController();
 supervisionRouter.use(ensureAuthenticated);
 
 supervisionRouter.get('/summary', supervisionController.index);
+
 supervisionRouter.post('/create', supervisionController.create);
 
 supervisionRouter.get('/index/:id',celebrate({

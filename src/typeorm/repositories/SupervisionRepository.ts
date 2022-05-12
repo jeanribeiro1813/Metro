@@ -19,6 +19,7 @@ interface ICreateSupervisionDTO {
   contratista:string  ;
   subcontratista:string  ;
   muro_guia:string  ;
+  periodo:string;
   inicio_perforacion:string  ;
   fin_perforacion:string  ;
   vaciado:string  ;
@@ -129,6 +130,7 @@ class SupervisionRepository implements ISupervisionRepository {
         contratista,
         subcontratista,
         muro_guia,
+        periodo,
         inicio_perforacion,
         fin_perforacion,
         vaciado,
@@ -173,6 +175,7 @@ class SupervisionRepository implements ISupervisionRepository {
   contratista,
   subcontratista,
   muro_guia,
+  periodo,
   inicio_perforacion,
   fin_perforacion,
   vaciado,

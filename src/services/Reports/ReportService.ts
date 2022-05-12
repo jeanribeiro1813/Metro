@@ -25,11 +25,11 @@ class ReportService {
         return cargoRepo;
     }
 
-   public async showfilter( fim_perfu:string): Promise<Reportes[] | undefined> {
+   public async showfilter( fin:string): Promise<Reportes[] | undefined> {
         const loadService = getCustomRepository(ReportesRepositoy);
 
         const cargoRepo = await loadService.createQueryBuilder().select()
-        .where(' fim_perfu :: text  ilike :fim_perfu', {fim_perfu: `%${fim_perfu}%`}).getMany();
+        .where(' fin :: text  ilike :fin', {fin: `%${fin}%`}).getMany();
 
 	
         this.Tratamento(cargoRepo);
@@ -46,9 +46,9 @@ class ReportService {
                     obj[key] = "";
                 }
 
-                const arr = obj[key].split('|');
+                
+                const arr = obj[key].toString().split('|');
                 obj[key] = arr;
-
 
 
                 if (obj[key].length === 1) {
@@ -59,7 +59,7 @@ class ReportService {
 
             // obj['actividade_area'] = [];
             // obj['condiciones_climaticas'] = [];
-            obj['actividade_area'] = '';
+           
 
             if (typeof (obj['locali']) === 'object') {
 
@@ -69,10 +69,10 @@ class ReportService {
                     obj['locali'].push(
                         {
                             "id": obj['locali'][idx],
-                            "vazio": obj['vazio'][idx],
-                            "cls": obj['cls'][idx],
+                            "vaciado": obj['vaciado'][idx],
+                            "csl": obj['csl'][idx],
                             "observaciones": obj['observaciones'][idx],
-                            "actividade_area":'' ,
+                            "actividad":obj['actividad'][idx] ,
                             "img_1": obj['img_1'],
                             "img_1_obs": obj['img_1_obs'],
                             "img_2": obj['img_2'],
@@ -93,10 +93,10 @@ class ReportService {
                 obj['locali'] = [
                     {
                         "id": obj['locali'],
-                        "vazio": obj['vazio'],
-                        "cls": obj['cls'],
+                        "vaciado": obj['vaciado'],
+                        "csl": obj['csl'],
                         "observaciones": obj['observaciones'],
-                        "actividade_area":obj['actividade_area'],
+                        "actividad":obj['actividad'],
                         "img_1": obj['img_1'],
                         "img_1_obs": obj['img_1_obs'],
                         "img_2": obj['img_2'],
@@ -108,7 +108,7 @@ class ReportService {
 
             }
 
-            delete obj['actividade_area']
+            delete obj['actividad']
             delete obj['id']
             delete obj['img_1']
             delete obj['img_2']
@@ -116,8 +116,8 @@ class ReportService {
             delete obj['img_1_obs']
             delete obj['img_2_obs']
             delete obj['img_3_obs']
-            delete obj['vazio']
-            delete obj['cls']
+            delete obj['vaciado']
+            delete obj['csl']
             delete obj['observaciones']
         });
     }

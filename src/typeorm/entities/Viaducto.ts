@@ -13,7 +13,7 @@ class Supervision{
     id!:string  ;
     
     @Column()
-    cod: string;
+    codigo: string;
     
     @Column()
     descripcion!:string  ;

@@ -7,7 +7,7 @@ import AppError from '../../errors/AppError';
 interface IRequestDTO {
 
     id:string,
-    cod:string
+    codigo:string
     descripcion:string,
  
 }
@@ -15,7 +15,7 @@ interface IRequestDTO {
 class UpdateViadcutoService{
     public async execute(
         {
-            id,cod,
+            id,codigo,
             descripcion
    
         }:IRequestDTO
@@ -30,7 +30,7 @@ class UpdateViadcutoService{
         }
 
         result.descripcion = descripcion ? descripcion : result.descripcion;
-        result.cod = cod ? cod : result.cod;
+        result.codigo = codigo ? codigo : result.codigo;
 
        
         

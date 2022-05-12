@@ -6,23 +6,14 @@ import {
 } from "typeorm";
     
     
-@ViewEntity('reportes')
+@ViewEntity('supervision_reporte')
 class Supervision{
 
     @PrimaryColumn()
     id!:number
 
     @Column('varchar')
-    fim_perfu!:string ;
-
-    @Column()
-    inicio!: string;
-
-    @Column()
-    fin!: string;
-
-    @Column()
-    proyecto!: string;
+    proyecto!:string ;
 
     @Column()
     actividad!: string;
@@ -34,55 +25,64 @@ class Supervision{
     inpeccion!: string;
 
     @Column()
-    manha!: string;
-
-    @Column()
-    tarde!: string;
-
-    @Column()
-    noche!: string;
-
-    @Column()
     contratista!: string;
 
-    @Column('varchar')
-    subcontra!:string   ;
+    @Column()
+    subcontra!: string;
 
-    @Column('varchar')
-    locali!:string   ;
+    @Column()
+    locali!: string;
 
     @Column()
     ensayos!: string;
-    
+
     @Column()
     observaciones!: string;
 
-    @Column('varchar')
-    img_1:string  ;
+    @Column()
+    img_1!: string;
+
+    @Column()
+    img_1_obs!: string;
 
     @Column('varchar')
-    img_1_obs:string  ;
+    img_2!:string   ;
 
     @Column('varchar')
-    img_2:string  ;
+    img_2_obs!:string   ;
+
+    @Column()
+    img_3!: string;
+    
+    @Column()
+    img_3_obs!: string;
 
     @Column('varchar')
-    img_2_obs:string  ;
+    periodo:string  ;
+
+    @Column('date')
+    inicio:string  ;
+
+    @Column('date')
+    fin:string  ;
+
+    @Column('varchar')
+    inicio_perforacion:string  ;
+
+    @Column('varchar')
+    fin_perforacion:string  ;
+
+    @Column('varchar')
+    inicio_construccion:string  ;
     
     @Column('varchar')
-    img_3:string;
+    vaciado:string;
 
     @Column('varchar')
-    img_3_obs:string  ;
+    csl:string  ;
     
     @Column('varchar')
-    vazio!:string ;
-
-    @Column('varchar')
-    cls!:string  ;
-
-    @Column('varchar')
-    obs!:string   ;
+    obs!:string ;
 
 }
     

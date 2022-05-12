@@ -12,7 +12,7 @@ router.get('/summary', reportSupervisionController.showFull);
 
 router.post('/filter',celebrate({
     [Segments.BODY]:{
-        fim_perfu:Joi.string().required()
+        fin:Joi.string().required()
     }
 }), reportSupervisionController.ShowFilter);
 

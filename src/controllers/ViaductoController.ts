@@ -30,7 +30,7 @@ export default class UbicacionesController {
 
     const {
       id,
-      cod,
+      codigo,
       descripcion
     } = request.body;
     
@@ -39,7 +39,7 @@ export default class UbicacionesController {
     const createdUbicacion = await createUbicacion.execute(
       { 
         id,
-        cod,
+        codigo,
         descripcion
       }
     );
@@ -63,7 +63,7 @@ export default class UbicacionesController {
     const {id} = request.params
 
     const{
-      cod,
+      codigo,
       descripcion
     } = request.body;
 
@@ -72,7 +72,7 @@ export default class UbicacionesController {
     const updatedUbicacion = await updateUbicacion.execute(
       {
         id,
-        cod,
+        codigo,
         descripcion
       }
     );
@@ -93,11 +93,11 @@ export default class UbicacionesController {
 
   public async filter(request: Request , response: Response){
 
-    const {cod} = request.body;
+    const {codigo} = request.body;
 
     const result = new LoadViaductoFilterService();
 
-    const viaducto = await result.filter({cod})
+    const viaducto = await result.filter({codigo})
 
     return response.json(viaducto);
   }

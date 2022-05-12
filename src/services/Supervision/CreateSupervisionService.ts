@@ -22,6 +22,7 @@ interface IRequestDTO {
   contratista:string  ;
   subcontratista:string  ;
   muro_guia:string  ;
+  periodo: string;
   inicio_perforacion:string  ;
   fin_perforacion:string  ;
   vaciado:string  ;
@@ -68,6 +69,7 @@ class CreateSupervisionService {
   contratista,
   subcontratista,
   muro_guia,
+  periodo,
   inicio_perforacion,
   fin_perforacion,
   vaciado,
@@ -96,63 +98,74 @@ class CreateSupervisionService {
     
   }: IRequestDTO): Promise<Supervision> {
     
-    if (!(ubicacion && e && n && nomenclatura)) {
-      throw new AppError('¡Por favor, inserte todas las entradas!');
+    if (!(ubicacion && e && n )) {
+      throw new AppError(`¡Por favor, inserte todas las entradas! `);
     }
-    const supervisionRepository = getCustomRepository(SupervisionRepository);
+
+    // try{
+
+      const supervisionRepository = getCustomRepository(SupervisionRepository);
     
-    const checkSupervisionExists = await supervisionRepository.findByNomeclatura(nomenclatura);
+      const checkSupervisionExists = await supervisionRepository.findByNomeclatura(nomenclatura);
 
-    if (checkSupervisionExists?.length) {
-      throw new AppError('Supervision already exists.');
-    }
+      if (checkSupervisionExists?.length) {
+        throw new AppError('Supervision already exists.');
+        }
 
-    const supervision = await supervisionRepository.create({
-      chave,
-  orden,
-  modulacion_viaducto,
-  sector,
-  estructura,
-  ubicacion,
-   descripcion,
-  tipologia_cimentacion,
-  nomenclatura,
-  actividad,
-  armadura20,
-  ejecucion50,
-  liberacion30,
-  contratista,
-  subcontratista,
-  muro_guia,
-  inicio_perforacion,
-  fin_perforacion,
-  vaciado,
-  csl,
-  descabezado,
-  longitud,
-  diametro,
-  rend_perforacion,
-  duracion_vaciado,
-  duracion_vaciado_csl,
-  estatus,
-  estatus_csl,
-  nota,
-  maquina,
-  ensaio_csl,
-  observaciones,
-  n,
-  e,
-  img_1,
-  img_2,
-  img_3,
-  img_1_obs,
-  img_2_obs,
-  img_3_obs,
-  inicio_construccion
+        const supervision = await supervisionRepository.create({
+          chave,
+      orden,
+      modulacion_viaducto,
+      sector,
+      estructura,
+      ubicacion,
+       descripcion,
+      tipologia_cimentacion,
+      nomenclatura,
+      actividad,
+      armadura20,
+      ejecucion50,
+      liberacion30,
+      contratista,
+      subcontratista,
+      muro_guia,
+      periodo,
+      inicio_perforacion,
+      fin_perforacion,
+      vaciado,
+      csl,
+      descabezado,
+      longitud,
+      diametro,
+      rend_perforacion,
+      duracion_vaciado,
+      duracion_vaciado_csl,
+      estatus,
+      estatus_csl,
+      nota,
+      maquina,
+      ensaio_csl,
+      observaciones,
+      n,
+      e,
+      img_1,
+      img_2,
+      img_3,
+      img_1_obs,
+      img_2_obs,
+      img_3_obs,
+      inicio_construccion
+          
+        });
+    
+        return supervision;
+     
+      // }
       
-    });
-
-    return supervision;
+      // catch(error){
+      //   throw new AppError(`${error}`);
+      // }
+   
   }
 }
 

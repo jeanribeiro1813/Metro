@@ -22,6 +22,7 @@ interface IRequestDTO {
       contratista:string  ;
       subcontratista:string  ;
       muro_guia:string  ;
+      periodo:string;
       inicio_perforacion:string  ;
       fin_perforacion:string  ;
       vaciado:string  ;
@@ -69,6 +70,7 @@ class UpdateSupervisionService{
             contratista,
             subcontratista,
             muro_guia,
+            periodo,
             inicio_perforacion,
             fin_perforacion,
             vaciado,
@@ -117,9 +119,11 @@ class UpdateSupervisionService{
         supervisionExisr.actividad = actividad ? actividad : supervisionExisr.actividad;
         supervisionExisr.armadura20 = armadura20 ? armadura20 : supervisionExisr.armadura20;
         supervisionExisr.ejecucion50 = ejecucion50 ? ejecucion50 : supervisionExisr.ejecucion50;
+        supervisionExisr.liberacion30 = liberacion30 ? liberacion30 : supervisionExisr.liberacion30;
         supervisionExisr.contratista = contratista ? contratista : supervisionExisr.contratista;
         supervisionExisr.subcontratista = subcontratista ? subcontratista : supervisionExisr.subcontratista;
         supervisionExisr.muro_guia = muro_guia ? muro_guia : supervisionExisr.muro_guia;
+        supervisionExisr.periodo = periodo ? periodo : supervisionExisr.periodo;
         supervisionExisr.inicio_perforacion = inicio_perforacion ? inicio_perforacion : supervisionExisr.inicio_perforacion
         supervisionExisr.fin_perforacion = fin_perforacion ? fin_perforacion : supervisionExisr.fin_perforacion;
         supervisionExisr.vaciado = vaciado ? vaciado : supervisionExisr.vaciado;

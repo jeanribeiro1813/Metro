@@ -23,6 +23,7 @@ interface IRequestDTO {
   contratista:string  ;
   subcontratista:string  ;
   muro_guia:string  ;
+  periodo:string;
   inicio_perforacion:string  ;
   inicio_construccion:string;
   fin_perforacion:string  ;
@@ -80,6 +81,7 @@ class LoadSupervisionService{
                 contratista:use?.contratista,
                 subcontratista:use?.subcontratista,
                 muro_guia:use?.muro_guia,
+                periodo:use?.periodo,
                 inicio_perforacion:use?.inicio_perforacion,
                 inicio_construccion:use?.inicio_construccion,
                 fin_perforacion:use?.fin_perforacion,

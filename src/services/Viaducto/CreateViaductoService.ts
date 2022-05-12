@@ -6,7 +6,7 @@ import AppError from '../../errors/AppError';
 interface IRequestDTO {
 
   id:string,
-  cod:string
+  codigo:string
   descripcion:string,
   
  
@@ -17,7 +17,7 @@ class CreateViaductoService {
 
   public async execute({
     id,
-    cod,
+    codigo,
     descripcion,
     
   }: IRequestDTO): Promise<Viaducto> {
@@ -37,7 +37,7 @@ class CreateViaductoService {
     const SSOMAPMT = await Repository.create({
 
       id,
-      cod,
+      codigo,
       descripcion
       
     });

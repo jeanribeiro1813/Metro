@@ -5,11 +5,11 @@ import Viaducto from '../entities/Viaducto';
 @EntityRepository(Viaducto)
 export default class PagamentoViewRepository extends Repository<Viaducto> {
 
-    public async findType(cod: string): Promise< Viaducto | undefined > {
+    public async findType(codigo: string): Promise< Viaducto | undefined > {
 
       const typeAvanco = this.findOne({
         where : {
-          cod
+          codigo
         },
 
       });
