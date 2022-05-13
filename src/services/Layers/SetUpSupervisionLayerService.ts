@@ -42,7 +42,7 @@ class SetUpSupervisionLayerService{
             throw new AppError('Supervisions not found');
         }
 
-        const layer = theme === 'Pilotes' || theme === 'Columnas' || theme === 'Capitel' || theme === 'Vigas' ? 'supervision' : theme.toLowerCase();
+        const layer = theme === 'PILOTES' || theme === 'PILAS' || theme === 'CABEZAS' || theme === 'VIGAS' ? 'SUPERVISION' : theme.toUpperCase();
         let markers = "";
         const source = dados.map((obj) =>{
             const tag = theme;

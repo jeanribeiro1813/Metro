@@ -42,18 +42,18 @@ class LoadLayersService{
             view,
         }
 
-        const supervisionPilotesLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Pilotes');
-        const supervisionColummnasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Columnas');
-        const supervisionCapitelLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Capitel');
-        const supervisionVigaLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'Vigas');
+        const supervisionPilotesLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'PILOTES');
+        const supervisionPilasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'PILAS');
+        const supervisionCabezasLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'CABEZAS');
+        const supervisionVigaLayer = await setUpSupervisionLayer.execute(setUpLayerProps, 'VIGAS');
         
         const SSOMAPMTLayer = await SetUpSSOMAPMTLayer.execute(setUpLayerProps); 
         const ubicacionesLayer = await setUpUbicacionesLayer.execute(setUpLayerProps);
         
         const layers = <ILayerOfMap[]>[
             supervisionPilotesLayer,
-            supervisionColummnasLayer,
-            supervisionCapitelLayer,
+            supervisionPilasLayer,
+            supervisionCabezasLayer,
             supervisionVigaLayer,
             ubicacionesLayer,
             SSOMAPMTLayer

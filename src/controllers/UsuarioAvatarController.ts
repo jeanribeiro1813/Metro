@@ -9,6 +9,7 @@ export default class UsuarioAvatarController {
   // index, show, create, update, delete
   public async update(request: Request, response: Response): Promise<Response> {
     const updateUserAvatar = new UpdateUserAvatarService();
+    console.log(request.file);
     if(request.file){
       const updatedUser = await updateUserAvatar.execute({
         user_id: request.user.id,

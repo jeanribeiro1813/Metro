@@ -28,11 +28,11 @@ export default class ReporterSupervisionController {
 
   public async ShowFilter(request: Request, response: Response): Promise<Response> {
 
-    const { fin } = request.body
+    const { fin , actividad } = request.body
 
     const loadSupervision = new ReporteSupervisionService();
 
-    const supervision = await loadSupervision.showfilter(fin);
+    const supervision = await loadSupervision.showfilter(fin, actividad);
 
     return response.json(supervision);
 

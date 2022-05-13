@@ -26,7 +26,7 @@ routes.use('/sessions',sessionsRouter);
 routes.use('/layers',layersRouter);
 routes.use('/profile',profileRouter);
 routes.use('/search',searchRoutes);
-routes.use('/supevisionreports',reportRoutes);
+routes.use('/supervisionreports',reportRoutes);
 routes.use('/ssomaypmt',SSOMAPMTRoutes);
 routes.use('/acciones',accionesRoutes);
 routes.use('/actividades',actividadesRoutes);

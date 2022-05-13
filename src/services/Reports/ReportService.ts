@@ -25,11 +25,11 @@ class ReportService {
         return cargoRepo;
     }
 
-   public async showfilter( fin:string): Promise<Reportes[] | undefined> {
+   public async showfilter( fin:string,actividad:string): Promise<Reportes[] | undefined> {
         const loadService = getCustomRepository(ReportesRepositoy);
 
         const cargoRepo = await loadService.createQueryBuilder().select()
-        .where(' fin :: text  ilike :fin', {fin: `%${fin}%`}).getMany();
+        .where(' fin :: text  ilike :fin AND actividad :: text ilike :actividad', {fin: `%${fin}%`,actividad:`%${actividad}%`}).getMany();
 
 	
         this.Tratamento(cargoRepo);
@@ -73,6 +73,8 @@ class ReportService {
                             "csl": obj['csl'][idx],
                             "observaciones": obj['observaciones'][idx],
                             "actividad":obj['actividad'][idx] ,
+                            "estatus":obj['estatus'][idx],
+                            "estatus_csl":obj['estatus_csl'][idx],
                             "img_1": obj['img_1'],
                             "img_1_obs": obj['img_1_obs'],
                             "img_2": obj['img_2'],
@@ -97,6 +99,8 @@ class ReportService {
                         "csl": obj['csl'],
                         "observaciones": obj['observaciones'],
                         "actividad":obj['actividad'],
+                        "estatus":obj['estatus'],
+                        "estatus_csl":obj['estatus_csl'],
                         "img_1": obj['img_1'],
                         "img_1_obs": obj['img_1_obs'],
                         "img_2": obj['img_2'],

@@ -70,13 +70,19 @@ class Supervision{
     inicio_perforacion:string  ;
 
     @Column('varchar')
-    fin_perforacion:string  ;
-
-    @Column('varchar')
     inicio_construccion:string  ;
     
     @Column('varchar')
     vaciado:string;
+
+    @Column('varchar')
+    descabezado:string;
+
+    @Column()
+    estatus:string;
+
+    @Column()
+    estatus_csl:string;
 
     @Column('varchar')
     csl:string  ;
