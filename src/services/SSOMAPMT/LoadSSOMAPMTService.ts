@@ -79,7 +79,7 @@ class LoadSSOMAPMTService{
 
         )
 
-        const responseDTO = {
+        const responseDTO : any= {
             summary,
         };
 
