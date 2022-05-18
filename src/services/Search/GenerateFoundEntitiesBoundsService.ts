@@ -19,8 +19,9 @@ class GenerateFoundEntitiesBoundsService{
                 ST_Collect(
                     ARRAY[${geomFromText.toString()}]
                 )   
-            ) As box, St_X(${geomFromText.toString()}) as x, St_Y(${geomFromText.toString()}) as y;
-        `
+            ) As box, St_X(${geomFromText[0].toString()}) as x, St_Y(${geomFromText[0].toString()}) as y;
+        `;
+
         const result = await getManager().query(query);
         
         
